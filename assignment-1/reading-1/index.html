@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Life Is Data | Interactive Reading 1</title>
+<style>
+:root{--ink:#18202b;--muted:#52606d;--paper:#fbfbfd;--card:#fff;--purple:#634cb4;--teal:#147f88;--line:#dfe4ea;--soft:#f2f0fb;--good:#eaf7f3;--focus:#ffbf47}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:#3f2d91} a:focus,button:focus,textarea:focus{outline:4px solid var(--focus);outline-offset:3px}
+header{background:#18202b;color:white;padding:3rem 1.25rem}.wrap{max-width:980px;margin:auto}
+.eyebrow{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9c1ef}
+h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.05;margin:.35rem 0 1rem} h2{font-size:2rem;line-height:1.15;margin-top:0}
+.lead{font-size:1.2rem;max-width:760px}.meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.3rem}.pill{border:1px solid #6e7783;border-radius:999px;padding:.3rem .75rem}
+.progress-shell{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:10}.progress{height:8px;background:#e8e8ee}.bar{height:100%;width:0;background:var(--purple)}
+nav{max-width:980px;margin:auto;padding:.55rem 1rem;font-size:.92rem;color:var(--muted)}
+main{padding:2rem 1.25rem 5rem} section{max-width:980px;margin:0 auto 3.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.4rem;box-shadow:0 3px 14px rgba(20,30,50,.04)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.data-chip{font-size:1.35rem;font-weight:700;padding:1.2rem;border-radius:14px;background:var(--soft)}
+.callout{border-left:6px solid var(--teal);padding:1rem 1.2rem;background:#eef8f8;border-radius:10px}
+button{font:inherit;font-weight:700;border:2px solid var(--purple);background:white;color:#3e2c8d;border-radius:12px;padding:.7rem 1rem;cursor:pointer}
+button:hover{background:var(--soft)} .choice{width:100%;text-align:left;margin:.35rem 0}
+.feedback{display:none;margin-top:.8rem;padding:.9rem;border-radius:10px;background:var(--good)} .feedback.show{display:block}
+iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#111}
+.media-note{font-size:.92rem;color:var(--muted)}
+textarea{width:100%;min-height:120px;border:2px solid #b8c0ca;border-radius:10px;padding:.8rem;font:inherit}
+details{background:white;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;margin:.7rem 0} summary{font-weight:700;cursor:pointer}
+.w5{display:grid;grid-template-columns:110px 1fr;gap:.6rem;margin:.55rem 0}.w5 strong{color:var(--purple)}
+.bigq{font-size:1.45rem;font-weight:700;color:#3f2d91}
+footer{background:#18202b;color:white;padding:2rem 1.25rem} footer a{color:#ded8ff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.w5{grid-template-columns:1fr}h2{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="eyebrow">Assignment 1 • Interactive Reading 1</div>
+<h1>Your Life Is Data</h1>
+<p class="lead">You have already encountered data today. This reading asks you to notice it differently: as information created by people, places, choices, devices, and systems—and as something worth questioning.</p>
+<div class="meta"><span class="pill">Self-paced</span><span class="pill">About 20–30 min</span><span class="pill">Connects to 5W+H</span></div>
+</div>
+</header>
+<div class="progress-shell"><div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div><nav aria-label="Reading progress">Scroll through the reading. Your progress is shown above.</nav></div>
+<main>
+<section>
+<h2>1. Start with your last two hours</h2>
+<p>Think about what you have looked at, tapped, bought, watched, measured, or waited for. Which of these could contain data?</p>
+<div class="grid">
+<div class="data-chip">“8 min away”</div><div class="data-chip">$6.75</div><div class="data-chip">82°F</div><div class="data-chip">“In stock”</div><div class="data-chip">1,284 views</div><div class="data-chip">“Comedy”</div>
+</div>
+<div class="card" style="margin-top:1rem">
+<p class="bigq">Quick check: Which items above count as data?</p>
+<button class="choice" data-target="f1">Reveal the answer</button>
+<div id="f1" class="feedback" tabindex="-1"><strong>All of them.</strong> Data can be a measurement, price, estimate, status, count, or category. One of the biggest traps in data literacy is assuming that data must be a number.</div>
+</div>
+</section>
+
+<section>
+<h2>2. Watch: finding ourselves in data</h2>
+<p>Designer Giorgia Lupi argues that data can describe ordinary human life—not just business metrics or scientific measurements. As you watch, look for <strong>one example that expands your idea of what can count as data</strong>.</p>
+<div class="card">
+<iframe src="https://embed.ted.com/talks/giorgia_lupi_how_we_can_find_ourselves_in_data" title="TED Talk: Giorgia Lupi, How we can find ourselves in data" allowfullscreen></iframe>
+<p class="media-note">If the embedded player is unavailable in your learning system, use the official TED link below. TED provides a transcript on the talk page.</p>
+<p><a href="https://www.ted.com/talks/giorgia_lupi_how_we_can_find_ourselves_in_data" target="_blank" rel="noopener">Open the Giorgia Lupi TED Talk and transcript</a></p>
+</div>
+<div class="card" style="margin-top:1rem">
+<label for="notice"><strong>Capture your thought:</strong> What example or idea from the talk changed or stretched your definition of data?</label>
+<textarea id="notice" placeholder="Write a sentence or two for yourself. This response stays in your browser and is not submitted."></textarea>
+</div>
+</section>
+
+<section>
+<h2>3. What if you collected the “small stuff”?</h2>
+<p>Lupi and information designer Stefanie Posavec did exactly that in <strong>Dear Data</strong>. For one year, they each collected a different kind of personal data every week, turned it into a hand-drawn visualization on a postcard, and mailed it to the other person.</p>
+<div class="callout"><strong>The important part:</strong> the project treated everyday experiences as data worth noticing. The subjects included activities, thoughts, and other details of daily life—not only traditional statistics.</div>
+<div class="card" style="margin-top:1rem">
+<h3>Explore Dear Data</h3>
+<p>Open the project in a new tab and browse several postcards. Don't try to understand every mark. Instead, ask: <strong>What did they decide was worth recording?</strong></p>
+<p><a href="https://www.dear-data.com/theproject" target="_blank" rel="noopener">Explore the Dear Data project</a> &nbsp;•&nbsp; <a href="https://www.dear-data.com/all/" target="_blank" rel="noopener">Browse the 52 weeks of data postcards</a></p>
+</div>
+</section>
+
+<section>
+<h2>4. Try the mindset</h2>
+<p>Which of these could become a personal data project? Select an example, then reveal the thinking.</p>
+<div class="grid">
+<div class="card"><strong>Times I laughed today</strong><br><button class="choice" data-target="a1">Could this be data?</button><div id="a1" class="feedback" tabindex="-1">Yes. You could record when you laughed, what triggered it, where you were, or who you were with.</div></div>
+<div class="card"><strong>Doors I walked through</strong><br><button class="choice" data-target="a2">Could this be data?</button><div id="a2" class="feedback" tabindex="-1">Yes. You might record location, time, type of door, destination, or frequency.</div></div>
+<div class="card"><strong>Songs I skipped</strong><br><button class="choice" data-target="a3">Could this be data?</button><div id="a3" class="feedback" tabindex="-1">Yes. A skip is an action that can be recorded. You might also capture artist, genre, time, or how long you listened first.</div></div>
+</div>
+<p class="callout"><strong>Pattern:</strong> almost anything can become data when something about it is observed and recorded. But deciding <em>what</em> to record shapes the story the data can tell.</p>
+</section>
+
+<section>
+<h2>5. Now question the data</h2>
+<p>Deck 1 introduced 5W+H. Here is the difference between simply seeing a value and investigating it.</p>
+<div class="card">
+<h3>Example: “Delivery arriving in 12 minutes”</h3>
+<div class="w5"><strong>WHAT</strong><span>Is 12 minutes an exact measurement, an estimate, or a prediction?</span></div>
+<div class="w5"><strong>WHERE</strong><span>I see it in an app—but where did the information used to create it originate?</span></div>
+<div class="w5"><strong>WHO</strong><span>Who creates, uses, or is affected by this estimate? The driver? Customer? Delivery company? Seller?</span></div>
+<div class="w5"><strong>WHY</strong><span>Why is the estimate shown? What decision is it trying to help me make?</span></div>
+<div class="w5"><strong>HOW</strong><span>Could location, route, traffic, previous deliveries, or another system be used to calculate it?</span></div>
+</div>
+<p><strong>Notice:</strong> good data thinking does not require pretending you know how the system works. A strong answer can identify what you know, offer a reasonable hypothesis, and name what you would need to verify.</p>
+</section>
+
+<section>
+<h2>6. Mini investigation</h2>
+<div class="card">
+<p class="bigq">A fitness machine displays: “Calories: 164.”</p>
+<p>Which question pushes furthest beyond simply reading the number?</p>
+<button class="choice quiz" data-correct="false" data-group="q1">A. What number is displayed?</button>
+<button class="choice quiz" data-correct="false" data-group="q1">B. Is 164 larger than 100?</button>
+<button class="choice quiz" data-correct="true" data-group="q1">C. How was 164 calculated, and what information about the user or workout does the machine use?</button>
+<div id="q1-feedback" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>7. Take the lens into your own world</h2>
+<p>Before Assignment 1 asks you to find three examples, practice with <strong>one possible find</strong> from your own life. It can be something you saw today or something you expect to encounter later.</p>
+<div class="card">
+<label for="mine"><strong>My possible data find:</strong></label>
+<textarea id="mine" placeholder="Example: the estimated arrival time in my bus app"></textarea>
+<details><summary>WHAT could I ask?</summary><p>What exactly does the data represent? What can it tell me—and what can it not tell me?</p></details>
+<details><summary>WHERE could I ask?</summary><p>Where did I encounter it? Is that also where the information originated?</p></details>
+<details><summary>WHO could I ask?</summary><p>Who creates, collects, uses, or is affected by it?</p></details>
+<details><summary>WHY could I ask?</summary><p>Why is it collected or shown? What decision might it influence?</p></details>
+<details><summary>HOW could I ask?</summary><p>How might it be collected, calculated, estimated, or shared?</p></details>
+</div>
+</section>
+
+<section>
+<h2>8. Carry this into Assignment 1</h2>
+<div class="grid">
+<div class="card"><h3>FIND</h3><p>Notice three real examples of data in your everyday life.</p></div>
+<div class="card"><h3>LABEL</h3><p>Choose at least one piece of data from each. Deck 2 will help you classify it.</p></div>
+<div class="card"><h3>QUESTION</h3><p>Use WHAT, WHERE, WHO, WHY, and HOW to investigate what is behind it.</p></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Your goal is not to find the “coolest” data.</strong> Your goal is to show that you can notice ordinary information and ask thoughtful questions about what it means, where it came from, who it involves, why it exists, and how it got there.</div>
+</section>
+
+<section>
+<h2>Sources & further exploration</h2>
+<p>This learning object draws on the official TED page for Giorgia Lupi's <em>How we can find ourselves in data</em> and the official Dear Data project by Giorgia Lupi and Stefanie Posavec.</p>
+<ul>
+<li><a href="https://www.ted.com/talks/giorgia_lupi_how_we_can_find_ourselves_in_data" target="_blank" rel="noopener">TED: How we can find ourselves in data</a></li>
+<li><a href="https://www.dear-data.com/theproject" target="_blank" rel="noopener">Dear Data: The Project</a></li>
+<li><a href="https://www.dear-data.com/all/" target="_blank" rel="noopener">Dear Data: 52 weeks of postcards</a></li>
+</ul>
+</section>
+</main>
+<footer><div class="wrap"><strong>Assignment 1 • Interactive Reading 1</strong><br>Remember: Don't just see the data. Ask what is behind it.</div></footer>
+<script>
+const bar=document.getElementById('bar');
+function prog(){const d=document.documentElement; const max=d.scrollHeight-d.clientHeight; bar.style.width=(max?d.scrollTop/max*100:100)+'%'}
+document.addEventListener('scroll',prog,{passive:true}); prog();
+document.querySelectorAll('[data-target]').forEach(btn=>btn.addEventListener('click',()=>{
+ const el=document.getElementById(btn.dataset.target); el.classList.add('show'); el.focus();
+}));
+document.querySelectorAll('.quiz').forEach(btn=>btn.addEventListener('click',()=>{
+ const f=document.getElementById(btn.dataset.group+'-feedback'); f.classList.add('show');
+ f.innerHTML=btn.dataset.correct==='true'
+ ? '<strong>Yes.</strong> That question investigates HOW the number was produced and what inputs may shape it. It moves from reading data to questioning its meaning and reliability.'
+ : '<strong>Not quite.</strong> That question reads or compares the displayed value, but it does not investigate what is behind it. Try the option that asks how the number was produced.';
+ f.focus();
+}));
+</script>
+</body>
+</html>
