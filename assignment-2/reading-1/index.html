@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Follow the Data | Assignment 2 Interactive Reading 1</title>
+<style>
+:root{--ink:#17202b;--muted:#596575;--paper:#fbfcfe;--card:#fff;--blue:#2e5bad;--teal:#137f88;--purple:#674cb4;--line:#dce3ea;--soft:#f3f6fa;--good:#e9f7f2;--warn:#fff5dc;--focus:#ffbf47}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:#3e2c8d}a:focus,button:focus,textarea:focus{outline:4px solid var(--focus);outline-offset:3px}
+header{background:var(--ink);color:white;padding:3rem 1.25rem}.wrap,section{max-width:980px;margin:auto}
+.eyebrow{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#cbd7f1}h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.03;margin:.35rem 0 1rem}
+h2{font-size:2rem;line-height:1.15;margin-top:0}.lead{font-size:1.2rem;max-width:800px}.meta{display:flex;gap:.7rem;flex-wrap:wrap}.pill{border:1px solid #748091;border-radius:999px;padding:.3rem .75rem}
+.progress-shell{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}.progress{height:8px;background:#e8edf2}.bar{height:100%;width:0;background:var(--blue)}nav{max-width:980px;margin:auto;padding:.55rem 1rem;color:var(--muted);font-size:.92rem}
+main{padding:2rem 1.25rem 5rem}section{margin-bottom:3.5rem}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.35rem;box-shadow:0 3px 14px rgba(20,30,50,.04)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.callout{border-left:6px solid var(--teal);padding:1rem 1.2rem;background:#eef8f8;border-radius:10px}.warning{border-left:6px solid #bd840d;padding:1rem 1.2rem;background:var(--warn);border-radius:10px}
+button{font:inherit;font-weight:700;border:2px solid var(--blue);background:#fff;color:#244b91;border-radius:12px;padding:.7rem 1rem;cursor:pointer}.choice{width:100%;text-align:left;margin:.35rem 0}.feedback{display:none;margin-top:.8rem;padding:.9rem;border-radius:10px;background:var(--good)}.feedback.show{display:block}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}.step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:1rem}.step strong{display:block;color:var(--purple);font-size:1.05rem}
+.timeline{border-left:4px solid var(--blue);margin-left:1rem;padding-left:1.2rem}.event{margin:0 0 1.3rem}.year{font-weight:800;color:var(--purple)}
+.bigq{font-size:1.4rem;font-weight:700;color:#3f2d91}textarea{width:100%;min-height:110px;border:2px solid #b8c0ca;border-radius:10px;padding:.8rem;font:inherit}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;margin:.7rem 0}summary{font-weight:700;cursor:pointer}
+footer{background:var(--ink);color:#fff;padding:2rem 1.25rem}footer a{color:#dcd6ff}
+@media(max-width:720px){.flow{grid-template-columns:1fr}h2{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Assignment 2 • Interactive Reading 1</div>
+<h1>Follow the Data</h1>
+<p class="lead">AI can feel mysterious when we only look at the output. In this reading, you will trace what happens before and after the output—and practice finding the data story inside an AI system.</p>
+<div class="meta"><span class="pill">Self-paced</span><span class="pill">About 20–30 min</span><span class="pill">Follows Deck 1</span></div>
+</div></header>
+
+<div class="progress-shell"><div class="progress"><div class="bar" id="bar"></div></div><nav>Move through the reading in order. Activities give immediate feedback.</nav></div>
+
+<main>
+<section>
+<h2>1. AI is not magic</h2>
+<p>When an app recommends a song, a bank flags a transaction, or a chatbot generates a response, it can look like the computer simply “knew” what to do.</p>
+<p>Instead, start looking for a system:</p>
+<div class="flow">
+<div class="step"><strong>DATA</strong>Examples, records, text, images, measurements, clicks, transactions, labels, feedback...</div>
+<div class="step"><strong>METHOD</strong>Rules, learned patterns, or a combination are used to perform a task.</div>
+<div class="step"><strong>INPUT</strong>New information enters the system.</div>
+<div class="step"><strong>OUTPUT</strong>The system predicts, recommends, classifies, supports a decision, or generates content.</div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Your new habit:</strong> when someone says “AI did this,” ask: <em>What data story is behind “this”?</em></div>
+</section>
+
+<section>
+<h2>2. Is automation always AI?</h2>
+<div class="card">
+<p class="bigq">A store programs a system: “IF inventory reaches 5 items, THEN send a reorder alert.”</p>
+<p>Which description is stronger?</p>
+<button class="choice rule" data-a="a">A. It must be machine learning because a computer made the decision.</button>
+<button class="choice rule" data-a="b">B. It can be ordinary rule-based automation because a person explicitly defined the logic.</button>
+<div id="rulefb" class="feedback" tabindex="-1"></div>
+</div>
+<p>The boundary around “AI” can be debated, but one useful distinction is between <strong>explicit rules</strong> and systems that <strong>learn patterns from data</strong>. Machine learning uses algorithms and statistical models to infer patterns rather than relying only on explicit instructions.</p>
+</section>
+
+<section>
+<h2>3. Try a machine-learning system yourself</h2>
+<p>Google's <strong>Teachable Machine</strong> lets you create a simple machine-learning model in a browser without coding. You gather examples into categories, train a model, and test it on new examples. Google describes the process as <strong>gather → train → test</strong>.</p>
+<div class="card">
+<h3>Optional hands-on experiment</h3>
+<p>On a desktop/laptop, create two image categories—for example, <strong>hand up</strong> and <strong>hand down</strong>. Give the system several examples of each, train it, and then test it.</p>
+<p><a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener">Open Google's Teachable Machine</a></p>
+<p><strong>While experimenting, notice:</strong> What happens when your new example looks different from the examples you used during training?</p>
+</div>
+<div class="warning" style="margin-top:1rem"><strong>Privacy note:</strong> you do not need to use your face or any identifying image. You can train with objects, hand positions, paper shapes, or skip the experiment. Google's tool says training happens locally on your device.</div>
+</section>
+
+<section>
+<h2>4. Training is not the same as using</h2>
+<div class="grid">
+<div class="card"><h3>Training</h3><p>The model is developed by learning patterns from examples/data. Training changes the model.</p></div>
+<div class="card"><h3>Using / inference</h3><p>A trained model receives new input and produces an output. This is the moment when the model is being used.</p></div>
+</div>
+<div class="card" style="margin-top:1rem">
+<p class="bigq">A spam detector learned from past examples. A new email arrives and the model labels it “spam.” What is the new email?</p>
+<button class="choice infer" data-a="train">Training data</button>
+<button class="choice infer" data-a="input">New input used for inference</button>
+<div id="inferfb" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>5. Follow the data: music recommendation</h2>
+<p>A music app recommends a song you have never heard. Where might data appear?</p>
+<details><summary>What data might shape the model?</summary><p>Depending on the system, examples could include listening behavior, songs, artists, genres, saves, skips, searches, or patterns across many listeners.</p></details>
+<details><summary>What might be the new input/context?</summary><p>Your recent behavior, current session, selected song, search, playlist, or other permitted context could affect the recommendation.</p></details>
+<details><summary>What is the output?</summary><p>A ranked recommendation—a prediction about what you may want to hear.</p></details>
+<details><summary>What happens after the output?</summary><p>You play, skip, save, replay, or ignore the recommendation. Those actions can themselves become new data.</p></details>
+<div class="callout"><strong>Notice the loop:</strong> AI systems can produce outputs that influence human behavior, and that behavior can create more data.</div>
+</section>
+
+<section>
+<h2>6. AI has a history</h2>
+<p>Generative AI became highly visible in the 2020s, but the field is much older.</p>
+<div class="timeline">
+<div class="event"><span class="year">1950</span><br>Alan Turing published a famous paper asking how machine intelligence might be evaluated.</div>
+<div class="event"><span class="year">1956</span><br>The Dartmouth Summer Research Project helped establish artificial intelligence as a research field. Dartmouth identifies this event as the birthplace of the field and credits John McCarthy with coining the term.</div>
+<div class="event"><span class="year">Later decades</span><br>Researchers developed many approaches to AI, including machine learning and neural networks. Progress did not happen in one straight line.</div>
+<div class="event"><span class="year">2000s–2010s</span><br>Growing digital datasets, stronger computing, and advances in machine learning/deep learning helped drive major progress in vision, speech, language, and prediction.</div>
+<div class="event"><span class="year">2020s</span><br>Generative AI systems capable of producing text, images, audio, video, and code became widely accessible.</div>
+</div>
+<p><a href="https://ai.dartmouth.edu/our-story" target="_blank" rel="noopener">Explore Dartmouth's history of the 1956 AI workshop</a></p>
+</section>
+
+<section>
+<h2>7. What changed?</h2>
+<div class="grid">
+<div class="card"><h3>More data</h3><p>Digitization produced large collections of machine-readable text, images, transactions, sensor data, and behavior.</p></div>
+<div class="card"><h3>More computing power</h3><p>More powerful hardware made increasingly complex training possible.</p></div>
+<div class="card"><h3>New methods</h3><p>Advances in machine learning, neural networks, deep learning, and model architectures expanded capabilities.</p></div>
+<div class="card"><h3>Human decisions</h3><p>People still define goals, select data, design systems, test performance, and decide where AI is used.</p></div>
+</div>
+</section>
+
+<section>
+<h2>8. Generative AI: where is the data?</h2>
+<div class="flow">
+<div class="step"><strong>TRAINING</strong>Large collections of examples help shape patterns learned by a model.</div>
+<div class="step"><strong>MODEL</strong>Training produces learned parameters/patterns used to generate outputs.</div>
+<div class="step"><strong>YOUR INPUT</strong>A prompt and any additional context enter the system.</div>
+<div class="step"><strong>OUTPUT</strong>The system generates text, an image, code, audio, or another response.</div>
+</div>
+<div class="warning" style="margin-top:1rem"><strong>Important:</strong> fluent output is not automatically factual output. “It sounds confident” is not evidence that a claim is true. Deck 2 will examine this problem more closely.</div>
+</section>
+
+<section>
+<h2>9. Map an AI system</h2>
+<div class="card">
+<p class="bigq">Scenario: A hospital uses an AI tool to help identify possible abnormalities in medical images.</p>
+<p>Before deciding whether this is good or bad, identify the data story.</p>
+<label for="map">Write a few notes: What might be training data, new input, output, and the human role?</label>
+<textarea id="map" placeholder="Training data might include... New input might be... The output might be... A human might..."></textarea>
+<details><summary>Compare with a sample map</summary>
+<p><strong>Training:</strong> previously collected images and relevant labels/outcomes may be used. <strong>Input:</strong> a new medical image and possibly other permitted context. <strong>Output:</strong> a score, classification, highlighted region, or other decision-support information. <strong>Human role:</strong> qualified professionals may interpret the output in context.</p>
+<p>Then ask: Who was represented in the training data? How was performance tested? What errors occur? How should the output be used?</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2>10. Capability is not evidence</h2>
+<div class="card">
+<p class="bigq">Claim: “Our AI predicts which customers will leave.”</p>
+<p>Which response sounds most like a data professional?</p>
+<button class="choice evidence" data-a="wow">“Wow. AI can predict the future.”</button>
+<button class="choice evidence" data-a="no">“AI is unreliable, so I would ignore it.”</button>
+<button class="choice evidence" data-a="ask">“What data was used, what counts as ‘leave,’ how was performance tested, and where does the model make mistakes?”</button>
+<div id="evidencefb" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>11. Use this when you research Assignment 2</h2>
+<p>Your two sources will make claims about AI. Don't only summarize those claims. Trace them.</p>
+<div class="grid">
+<div class="card"><h3>GOAL</h3><p>What is the AI supposed to do?</p></div>
+<div class="card"><h3>DATA</h3><p>What might it learn from, receive, analyze, or produce?</p></div>
+<div class="card"><h3>OUTPUT</h3><p>Prediction? Recommendation? Classification? Generated content? Decision support?</p></div>
+<div class="card"><h3>HUMANS</h3><p>Who defines the goal, evaluates the system, uses the output, or is affected?</p></div>
+<div class="card"><h3>EVIDENCE</h3><p>What shows that the system actually works as claimed?</p></div>
+<div class="card"><h3>QUESTIONS</h3><p>What information is missing before you would trust the claim?</p></div>
+</div>
+</section>
+
+<section>
+<h2>12. Go deeper</h2>
+<p>You do not need to complete these resources for Assignment 2, but they are strong places to explore if you want more practice.</p>
+<div class="grid">
+<div class="card"><h3>Teachable Machine</h3><p>Build and test a simple machine-learning model without coding.</p><p><a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener">Explore Teachable Machine</a></p></div>
+<div class="card"><h3>Elements of AI</h3><p>A free learning resource that explores what AI is, machine learning, neural networks, and societal implications.</p><p><a href="https://course.elementsofai.com/" target="_blank" rel="noopener">Explore Elements of AI</a></p></div>
+<div class="card"><h3>Dartmouth AI History</h3><p>See the history of the 1956 workshop that helped establish AI as a field.</p><p><a href="https://ai.dartmouth.edu/our-story" target="_blank" rel="noopener">Explore Dartmouth's AI story</a></p></div>
+</div>
+</section>
+
+<section>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://ai.dartmouth.edu/our-story" target="_blank" rel="noopener">Dartmouth — Our Story: Where AI Was Born</a></li>
+<li><a href="https://home.dartmouth.edu/about/artificial-intelligence-ai-coined-dartmouth" target="_blank" rel="noopener">Dartmouth — Artificial Intelligence (AI) Coined at Dartmouth</a></li>
+<li><a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener">Google — Teachable Machine</a></li>
+<li><a href="https://course.elementsofai.com/1/1/" target="_blank" rel="noopener">Elements of AI — How Should We Define AI?</a></li>
+</ul>
+</section>
+</main>
+
+<footer><div class="wrap"><strong>Assignment 2 • Interactive Reading 1</strong><br>When someone says “AI did this,” follow the data.</div></footer>
+
+<script>
+const bar=document.getElementById('bar');
+function progress(){const d=document.documentElement,max=d.scrollHeight-d.clientHeight;bar.style.width=(max?d.scrollTop/max*100:100)+'%'}
+document.addEventListener('scroll',progress,{passive:true});progress();
+function show(id,msg){const e=document.getElementById(id);e.innerHTML=msg;e.classList.add('show');e.focus()}
+document.querySelectorAll('.rule').forEach(b=>b.onclick=()=>show('rulefb',b.dataset.a==='b'?'<strong>Yes.</strong> A computer following an explicitly programmed threshold can be ordinary rule-based automation. A machine-learning system instead learns patterns from examples/data.':'<strong>Not quite.</strong> A computer making an automatic decision does not automatically mean machine learning is involved.'));
+document.querySelectorAll('.infer').forEach(b=>b.onclick=()=>show('inferfb',b.dataset.a==='input'?'<strong>Correct.</strong> The new email is input to the already-trained model. Producing the spam prediction is inference.':'<strong>Try again.</strong> The model already learned from past examples. This new email is being evaluated by the trained model.'));
+document.querySelectorAll('.evidence').forEach(b=>b.onclick=()=>show('evidencefb',b.dataset.a==='ask'?'<strong>Exactly.</strong> The claim describes a capability. Those questions ask for evidence, definitions, data context, evaluation, and limitations.':'<strong>Not yet.</strong> Neither excitement nor rejection is enough evidence. Investigate how the claim was tested and what data supports it.'));
+</script>
+</body></html>
