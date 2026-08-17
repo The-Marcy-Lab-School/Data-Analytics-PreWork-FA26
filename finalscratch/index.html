@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Make Something Happen | Scratch Interactive Reading 1</title>
+
+<style>
+:root{
+  --ink:#18212d;
+  --paper:#fbfcfe;
+  --purple:#674cb4;
+  --teal:#137f88;
+  --blue:#2f5bad;
+  --green:#287a5b;
+  --gold:#b77e12;
+  --line:#dce3ea;
+  --muted:#596575;
+  --focus:#ffbf47;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+}
+
+a{
+  color:#402d91;
+}
+
+a:focus,
+button:focus,
+input:focus{
+  outline:4px solid var(--focus);
+  outline-offset:3px;
+}
+
+header{
+  background:var(--ink);
+  color:#fff;
+  padding:3rem 1.2rem;
+}
+
+.wrap,
+section{
+  max-width:980px;
+  margin:auto;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:800;
+  color:#d8d0f4;
+}
+
+h1{
+  font-size:clamp(2.5rem,6vw,4.8rem);
+  line-height:1;
+  margin:.4rem 0 1rem;
+}
+
+h2{
+  font-size:2rem;
+  line-height:1.15;
+  margin-top:0;
+}
+
+.lead{
+  font-size:1.2rem;
+  max-width:800px;
+}
+
+.pill{
+  display:inline-block;
+  border:1px solid #788495;
+  border-radius:999px;
+  padding:.25rem .7rem;
+  margin:.2rem;
+}
+
+.progress-shell{
+  position:sticky;
+  top:0;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  z-index:10;
+}
+
+.progress{
+  height:8px;
+  background:#e8edf2;
+}
+
+.bar{
+  height:100%;
+  background:var(--purple);
+  width:0;
+}
+
+.nav{
+  max-width:980px;
+  margin:auto;
+  padding:.55rem 1rem;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+main{
+  padding:2rem 1.2rem 5rem;
+}
+
+section{
+  margin-bottom:3.7rem;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:1.3rem;
+  box-shadow:0 3px 14px rgba(20,30,50,.04);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+}
+
+.callout{
+  border-left:6px solid var(--teal);
+  padding:1rem 1.2rem;
+  background:#eef8f8;
+  border-radius:10px;
+}
+
+.stop{
+  border-left:6px solid var(--gold);
+  padding:1rem 1.2rem;
+  background:#fff5dc;
+  border-radius:10px;
+  margin-top:1rem;
+}
+
+.code{
+  background:#f2f4f8;
+  border-radius:14px;
+  padding:1rem;
+  font-family:Arial,sans-serif;
+}
+
+.block{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  padding:.45rem .75rem;
+  border-radius:8px;
+  margin:.35rem 0;
+  color:#fff;
+  font-weight:700;
+}
+
+.event{
+  background:#c18b00;
+  color:#111;
+}
+
+.looks{
+  background:#7b55c7;
+}
+
+.motion{
+  background:#4169c1;
+}
+
+.control{
+  background:#cf7b13;
+}
+
+button{
+  font:inherit;
+  font-weight:700;
+  border:2px solid var(--purple);
+  background:#fff;
+  color:#3e2c8d;
+  border-radius:12px;
+  padding:.7rem 1rem;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#f3f0fb;
+}
+
+.choice{
+  width:100%;
+  text-align:left;
+  margin:.35rem 0;
+}
+
+.feedback{
+  display:none;
+  margin-top:.8rem;
+  padding:.9rem;
+  background:#eaf7f2;
+  border-radius:10px;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.check{
+  display:flex;
+  gap:.7rem;
+  align-items:flex-start;
+  margin:.6rem 0;
+}
+
+.check input{
+  margin-top:.35rem;
+  transform:scale(1.3);
+}
+
+.small{
+  color:var(--muted);
+  font-size:.93rem;
+}
+
+.tag{
+  display:inline-block;
+  background:#edf1f6;
+  border-radius:999px;
+  padding:.2rem .55rem;
+  font-size:.83rem;
+  font-weight:700;
+}
+
+.done{
+  display:none;
+  padding:1rem;
+  background:#eef8f8;
+  border-radius:12px;
+  margin-top:1rem;
+}
+
+.done.show{
+  display:block;
+}
+
+footer{
+  background:var(--ink);
+  color:#fff;
+  padding:2rem 1.2rem;
+}
+
+@media(max-width:700px){
+  h2{
+    font-size:1.65rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Final Project • Scratch Interactive Reading 1</div>
+
+    <h1>Make Something Happen</h1>
+
+    <p class="lead">
+      Never used Scratch? Perfect. By the end of this reading,
+      you will have an account, know the basic editor, and build
+      a tiny two-scene data story.
+    </p>
+
+    <span class="pill">Beginner</span>
+    <span class="pill">About 35–45 min</span>
+    <span class="pill">You will code today</span>
+  </div>
+</header>
+
+
+<div class="progress-shell">
+  <div class="progress" aria-hidden="true">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div class="nav">
+    <strong>Important:</strong>
+    keep this reading open and Scratch open in a second tab.
+  </div>
+</div>
+
+
+<main>
+
+<section>
+  <h2>1. First: create your Scratch account</h2>
+
+  <div class="card">
+    <p>
+      Scratch is a free platform for creating interactive stories,
+      games, and animations.
+    </p>
+
+    <p>
+      You need an account so you can save your work online and
+      eventually share your final project.
+    </p>
+
+    <ol>
+      <li>
+        Open
+        <a href="https://scratch.mit.edu/join/"
+           target="_blank"
+           rel="noopener">
+          Join Scratch
+        </a>.
+      </li>
+
+      <li>
+        Create a username.
+        <strong>Do not use your real name.</strong>
+      </li>
+
+      <li>
+        Create a password you can remember and keep private.
+      </li>
+
+      <li>
+        Complete the requested account information.
+      </li>
+
+      <li>
+        Enter the requested email address and complete email confirmation.
+      </li>
+
+      <li>
+        Sign in to Scratch.
+      </li>
+    </ol>
+
+    <p class="small">
+      Scratch's registration instructions tell users not to use
+      their real name as a username and to keep passwords private.
+    </p>
+  </div>
+
+  <div class="stop">
+    <strong>STOP &amp; DO:</strong>
+    Do not continue until you can sign in to your Scratch account.
+  </div>
+</section>
+
+
+<section>
+  <h2>2. Watch before you build</h2>
+
+  <div class="card">
+    <span class="tag">Official Scratch Foundation</span>
+
+    <h3>Getting Started</h3>
+
+    <p>
+      Use the official beginner resource below for a quick orientation.
+      It includes getting-started guidance, tutorials, and beginner resources.
+    </p>
+
+    <p>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/getting-started"
+         target="_blank"
+         rel="noopener">
+        Open Scratch Foundation: Getting Started
+      </a>
+    </p>
+
+    <p>
+      <strong>While you watch or explore, find:</strong>
+    </p>
+
+    <ul>
+      <li>the Stage</li>
+      <li>a Sprite</li>
+      <li>the Block Palette</li>
+      <li>the Code Area</li>
+      <li>the Green Flag</li>
+    </ul>
+  </div>
+
+  <div class="callout" style="margin-top:1rem;">
+    <strong>Key idea:</strong>
+
+    The <strong>Stage</strong> is where the project plays.
+
+    A <strong>sprite</strong> is a character or object.
+
+    <strong>Blocks</strong> are instructions.
+
+    You connect blocks in the <strong>Code Area</strong>.
+
+    The <strong>Green Flag</strong> can trigger your program to start.
+  </div>
+</section>
+
+
+<section>
+  <h2>3. Open the editor</h2>
+
+  <div class="card">
+    <p>
+      Go to
+      <a href="https://scratch.mit.edu/projects/editor/"
+         target="_blank"
+         rel="noopener">
+        Create a Scratch project
+      </a>.
+    </p>
+
+    <p>
+      Sign in if needed.
+    </p>
+
+    <div class="grid">
+
+      <div>
+        <h3>Stage</h3>
+        <p>
+          Where your audience sees the story or game happen.
+        </p>
+      </div>
+
+      <div>
+        <h3>Sprite</h3>
+        <p>
+          A programmable character or object.
+        </p>
+      </div>
+
+      <div>
+        <h3>Blocks</h3>
+        <p>
+          Instructions grouped into categories such as Motion,
+          Looks, Events, and Control.
+        </p>
+      </div>
+
+      <div>
+        <h3>Code Area</h3>
+        <p>
+          Where you snap blocks together into a script.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="stop">
+    <strong>STOP &amp; DO:</strong>
+    Name your project
+    <strong>Scratch Practice 1 – Data Story</strong>.
+  </div>
+</section>
+
+
+<section>
+  <h2>4. Your first program</h2>
+
+  <p>
+    Programs are instructions.
+    Scratch lets you build those instructions by snapping blocks together.
+  </p>
+
+  <div class="code"
+       aria-label="Scratch block sequence: when green flag clicked, say Welcome to my data lab for 2 seconds, move 50 steps, say We have a problem to solve for 2 seconds">
+
+    <span class="block event">
+      when green flag clicked
+    </span>
+
+    <span class="block looks">
+      say “Welcome to my data lab!” for 2 seconds
+    </span>
+
+    <span class="block motion">
+      move 50 steps
+    </span>
+
+    <span class="block looks">
+      say “We have a problem to solve.” for 2 seconds
+    </span>
+  </div>
+
+
+  <div class="card" style="margin-top:1rem;">
+    <ol>
+      <li>Click your sprite.</li>
+
+      <li>
+        From <strong>Events</strong>,
+        drag out <strong>when green flag clicked</strong>.
+      </li>
+
+      <li>
+        From <strong>Looks</strong>,
+        attach a <strong>say ___ for 2 seconds</strong> block.
+      </li>
+
+      <li>
+        Change the words.
+      </li>
+
+      <li>
+        From <strong>Motion</strong>,
+        attach <strong>move 10 steps</strong>
+        and change 10 to 50.
+      </li>
+
+      <li>
+        Add another <strong>say</strong> block.
+      </li>
+
+      <li>
+        Click the Green Flag.
+      </li>
+    </ol>
+  </div>
+
+
+  <div class="stop">
+    <strong>STOP &amp; DO:</strong>
+
+    Build and run the program before continuing.
+
+    Change the dialogue so it sounds like you.
+  </div>
+</section>
+
+
+<section>
+  <h2>5. What just happened?</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>EVENT</h3>
+
+      <p>
+        <strong>When green flag clicked</strong>
+        tells Scratch when to begin.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>SEQUENCE</h3>
+
+      <p>
+        Scratch runs connected instructions in order—
+        from top to bottom.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>RESULT</h3>
+
+      <p>
+        Your sprite talks and moves because your instructions
+        caused those actions.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="callout" style="margin-top:1rem;">
+    <strong>Programming idea #1:</strong>
+
+    EVENT → INSTRUCTIONS → RESULT
+  </div>
+</section>
+
+
+<section>
+  <h2>6. Predict before you run</h2>
+
+  <div class="card">
+
+    <p>
+      What will happen if you move the
+      <strong>move 50 steps</strong>
+      block so it comes <em>before</em> the first say block?
+    </p>
+
+    <button class="choice pred" data-a="same">
+      Nothing changes because the blocks are the same.
+    </button>
+
+    <button class="choice pred" data-a="order">
+      The sprite moves first, then speaks.
+    </button>
+
+    <button class="choice pred" data-a="error">
+      Scratch gives an error.
+    </button>
+
+    <div id="predfb"
+         class="feedback"
+         tabindex="-1">
+    </div>
+
+  </div>
+
+
+  <div class="stop">
+    <strong>TRY IT:</strong>
+
+    Rearrange the blocks and run the code.
+
+    Then put them in whatever order you prefer.
+  </div>
+</section>
+
+
+<section>
+  <h2>7. Make it yours</h2>
+
+  <div class="card">
+
+    <p>
+      Scratch calls programmable characters and objects
+      <strong>sprites</strong>.
+    </p>
+
+    <p>
+      You can choose one from the sprite library,
+      draw your own,
+      or upload an image.
+    </p>
+
+    <p>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/sprite-creation"
+         target="_blank"
+         rel="noopener">
+        Optional official walkthrough: Sprite Creation
+      </a>
+    </p>
+
+    <p>
+      <strong>Your task:</strong>
+
+      Add a second sprite that belongs in a data workplace.
+    </p>
+
+    <p>
+      It could be a teammate, coach, doctor, robot, customer,
+      athlete, detective, scientist—or something completely unexpected.
+    </p>
+
+  </div>
+
+
+  <div class="stop">
+    <strong>STOP &amp; DO:</strong>
+
+    Add a second sprite.
+
+    Click it and give <em>that sprite</em>
+    its own Green Flag + say script.
+  </div>
+</section>
+
+
+<section>
+  <h2>8. Important discovery: sprites have their own code</h2>
+
+  <div class="card">
+
+    <p>
+      If you click Sprite 1,
+      you see Sprite 1's scripts.
+    </p>
+
+    <p>
+      If you click Sprite 2,
+      you see Sprite 2's scripts.
+    </p>
+
+    <p>
+      This matters later when your final project has several
+      characters doing different things.
+    </p>
+
+    <p>
+      <strong>Quick check:</strong>
+      You added code while Sprite 2 was selected.
+      Which sprite will run that code?
+    </p>
+
+    <button class="choice spriteq" data-a="one">
+      Sprite 1
+    </button>
+
+    <button class="choice spriteq" data-a="two">
+      Sprite 2
+    </button>
+
+    <button class="choice spriteq" data-a="both">
+      Both automatically
+    </button>
+
+    <div id="spritefb"
+         class="feedback"
+         tabindex="-1">
+    </div>
+
+  </div>
+</section>
+
+
+<section>
+  <h2>9. Give your story a place</h2>
+
+  <div class="card">
+
+    <p>
+      A <strong>backdrop</strong>
+      is the Stage's background.
+    </p>
+
+    <p>
+      Backdrops let one Scratch project feel like it has
+      different locations or scenes.
+    </p>
+
+    <p>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/backdrop-background"
+         target="_blank"
+         rel="noopener">
+        Official Scratch Foundation: Backdrops
+      </a>
+    </p>
+
+    <p>
+      <strong>Add two backdrops:</strong>
+    </p>
+
+    <ul>
+      <li>
+        <strong>Scene 1:</strong>
+        a workplace or location
+      </li>
+
+      <li>
+        <strong>Scene 2:</strong>
+        somewhere the problem can be investigated
+      </li>
+    </ul>
+
+  </div>
+
+
+  <div class="stop">
+    <strong>STOP &amp; DO:</strong>
+
+    Add two backdrops before continuing.
+  </div>
+</section>
+
+
+<section>
+  <h2>10. Change scenes with code</h2>
+
+  <div class="code"
+       aria-label="Scratch block sequence: when green flag clicked, switch backdrop to first scene, say message, wait one second, switch backdrop to second scene">
+
+    <span class="block event">
+      when green flag clicked
+    </span>
+
+    <span class="block looks">
+      switch backdrop to [Scene 1]
+    </span>
+
+    <span class="block looks">
+      say “Something is wrong with our data.” for 2 seconds
+    </span>
+
+    <span class="block control">
+      wait 1 seconds
+    </span>
+
+    <span class="block looks">
+      switch backdrop to [Scene 2]
+    </span>
+  </div>
+
+
+  <div class="card" style="margin-top:1rem;">
+
+    <p>
+      Find <strong>switch backdrop to</strong>
+      in Looks.
+    </p>
+
+    <p>
+      Add it to your script.
+    </p>
+
+    <p>
+      You can also use <strong>wait</strong>
+      from Control so viewers have time to follow
+      what is happening.
+    </p>
+
+  </div>
+</section>
+
+
+<section>
+  <h2>11. Mini-build: The Data Problem</h2>
+
+  <p>
+    Now build something without copying every word from us.
+  </p>
+
+  <div class="card">
+
+    <h3>Your tiny story needs:</h3>
+
+
+    <div class="check">
+      <input type="checkbox" id="c1">
+
+      <label for="c1">
+        A Green Flag event starts the story.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input type="checkbox" id="c2">
+
+      <label for="c2">
+        At least 2 sprites.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input type="checkbox" id="c3">
+
+      <label for="c3">
+        At least 2 backdrops/scenes.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input type="checkbox" id="c4">
+
+      <label for="c4">
+        A character introduces a data-related problem.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input type="checkbox" id="c5">
+
+      <label for="c5">
+        At least one sprite moves.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input type="checkbox" id="c6">
+
+      <label for="c6">
+        The project switches from Scene 1 to Scene 2.
+      </label>
+    </div>
+
+  </div>
+
+
+  <div class="stop">
+
+    <strong>BUILD:</strong>
+
+    Create a 20–40 second story.
+
+    <p>
+      Example premise:
+    </p>
+
+    <blockquote>
+      “I work for a delivery company.
+      Our dashboard says 500 packages disappeared
+      from yesterday's data.
+      Let's investigate.”
+    </blockquote>
+
+    <p>
+      Use your own setting and problem.
+    </p>
+
+  </div>
+</section>
+
+
+<section>
+  <h2>12. Break it on purpose</h2>
+
+  <div class="card">
+
+    <p>
+      Programmers learn by experimenting.
+    </p>
+
+    <p>
+      Make <strong>one</strong> change
+      and observe what happens:
+    </p>
+
+    <ul>
+      <li>
+        Change <strong>move 50</strong>
+        to <strong>move -50</strong>.
+      </li>
+
+      <li>
+        Change a 2-second speech block
+        to 5 seconds.
+      </li>
+
+      <li>
+        Move the scene-change block earlier.
+      </li>
+
+      <li>
+        Delete a block,
+        run the project,
+        then put it back.
+      </li>
+    </ul>
+
+    <p>
+      <strong>Ask:</strong>
+    </p>
+
+    <ul>
+      <li>What did I expect?</li>
+      <li>What actually happened?</li>
+      <li>Which instruction caused the difference?</li>
+    </ul>
+
+  </div>
+
+
+  <div class="callout" style="margin-top:1rem;">
+
+    <strong>Programming idea #2:</strong>
+
+    Code is something you can test,
+    change,
+    and test again.
+
+    You do not have to understand everything
+    before experimenting.
+
+  </div>
+</section>
+
+
+<section>
+  <h2>13. Check your progress</h2>
+
+  <div class="card">
+
+    <p>
+      Before finishing,
+      make sure you can honestly say:
+    </p>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f1">
+
+      <label for="f1">
+        I can sign into Scratch
+        and find my saved project.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f2">
+
+      <label for="f2">
+        I know the difference between
+        the Stage and a sprite.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f3">
+
+      <label for="f3">
+        I can connect blocks
+        into a sequence.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f4">
+
+      <label for="f4">
+        I can use the Green Flag
+        to start code.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f5">
+
+      <label for="f5">
+        I can make a sprite
+        talk and move.
+      </label>
+    </div>
+
+
+    <div class="check">
+      <input class="finalcheck"
+             type="checkbox"
+             id="f6">
+
+      <label for="f6">
+        I can add and switch backdrops.
+      </label>
+    </div>
+
+
+    <button id="finish">
+      Check readiness
+    </button>
+
+
+    <div id="done"
+         class="done"
+         tabindex="-1">
+    </div>
+
+  </div>
+</section>
+
+
+<section>
+  <h2>14. Save it. You'll build on this thinking.</h2>
+
+  <div class="callout">
+
+    <strong>You just programmed.</strong>
+
+    <p>
+      You used an event,
+      created a sequence of instructions,
+      controlled sprites,
+      and changed scenes.
+    </p>
+
+    <p>
+      In Reading 2,
+      your program will stop being something people only watch.
+    </p>
+
+    <p>
+      You'll make it <strong>interactive</strong>
+      and give it information it can
+      <strong>remember</strong>
+      with variables.
+    </p>
+
+  </div>
+</section>
+
+
+<section>
+  <h2>Resources</h2>
+
+  <ul>
+
+    <li>
+      <a href="https://scratch.mit.edu/join/"
+         target="_blank"
+         rel="noopener">
+        Scratch — Join Scratch
+      </a>
+    </li>
+
+    <li>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/getting-started"
+         target="_blank"
+         rel="noopener">
+        Scratch Foundation — Getting Started
+      </a>
+    </li>
+
+    <li>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/sprite-creation"
+         target="_blank"
+         rel="noopener">
+        Scratch Foundation — Sprite Creation
+      </a>
+    </li>
+
+    <li>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/backdrop-background"
+         target="_blank"
+         rel="noopener">
+        Scratch Foundation — Backdrops
+      </a>
+    </li>
+
+    <li>
+      <a href="https://www.scratchfoundation.org/learn/learning-library/in-editor-tutorials"
+         target="_blank"
+         rel="noopener">
+        Scratch Foundation — In-editor Tutorials
+      </a>
+    </li>
+
+  </ul>
+</section>
+
+</main>
+
+
+<footer>
+  <div class="wrap">
+
+    <strong>
+      Scratch Interactive Reading 1 • Make Something Happen
+    </strong>
+
+    <br>
+
+    Next: choices, variables, and cause → effect.
+
+  </div>
+</footer>
+
+
+<script>
+
+const bar = document.getElementById('bar');
+
+function prog(){
+  const d = document.documentElement;
+  const max = d.scrollHeight - d.clientHeight;
+
+  bar.style.width =
+    (max ? d.scrollTop / max * 100 : 100) + '%';
+}
+
+document.addEventListener(
+  'scroll',
+  prog,
+  {passive:true}
+);
+
+prog();
+
+
+function show(id,msg){
+  const e = document.getElementById(id);
+
+  e.innerHTML = msg;
+  e.classList.add('show');
+  e.focus();
+}
+
+
+document
+  .querySelectorAll('.pred')
+  .forEach(button => {
+
+    button.onclick = () => {
+
+      show(
+        'predfb',
+
+        button.dataset.a === 'order'
+
+        ? `
+          <strong>Correct.</strong>
+          Sequence matters.
+          Scratch runs the connected blocks
+          from top to bottom,
+          so the sprite moves before it speaks.
+        `
+
+        : `
+          <strong>Try again.</strong>
+          Scratch follows the order
+          of the connected blocks.
+          Changing the order can change the result.
+        `
+      );
+
+    };
+
+  });
+
+
+document
+  .querySelectorAll('.spriteq')
+  .forEach(button => {
+
+    button.onclick = () => {
+
+      show(
+        'spritefb',
+
+        button.dataset.a === 'two'
+
+        ? `
+          <strong>Correct.</strong>
+          Code belongs to the sprite
+          that was selected when you created it.
+        `
+
+        : `
+          <strong>Not quite.</strong>
+          Each sprite can have its own scripts.
+          Click a sprite to see and edit its code.
+        `
+      );
+
+    };
+
+  });
+
+
+document
+  .getElementById('finish')
+  .onclick = () => {
+
+    const checks =
+      [...document.querySelectorAll('.finalcheck')];
+
+    const checked =
+      checks.filter(item => item.checked).length;
+
+    const output =
+      document.getElementById('done');
+
+
+    if(checked === checks.length){
+
+      output.innerHTML = `
+        <strong>Ready for Reading 2.</strong>
+
+        You have the foundations you need.
+
+        Make sure your Scratch project is saved.
+      `;
+
+    } else {
+
+      output.innerHTML = `
+        You checked
+        <strong>${checked} of ${checks.length}</strong>.
+
+        Revisit anything you cannot yet do confidently,
+        then check again.
+      `;
+
+    }
+
+    output.classList.add('show');
+    output.focus();
+
+  };
+
+</script>
+
+</body>
+</html>
