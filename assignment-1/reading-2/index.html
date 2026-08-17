@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Kind of Data Is This? | Interactive Reading 2</title>
+<style>
+:root{
+  --ink:#18202b;--muted:#596575;--paper:#fbfbfd;--card:#ffffff;
+  --purple:#634cb4;--teal:#147f88;--line:#dfe4ea;--soft:#f3f1fb;
+  --good:#eaf7f3;--warn:#fff6df;--focus:#ffbf47
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:#3f2d91}
+a:focus,button:focus,select:focus,textarea:focus{outline:4px solid var(--focus);outline-offset:3px}
+header{background:#18202b;color:#fff;padding:3rem 1.25rem}
+.wrap{max-width:980px;margin:auto}
+.eyebrow{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9c1ef}
+h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.05;margin:.35rem 0 1rem}
+h2{font-size:2rem;line-height:1.15;margin-top:0}
+h3{margin-top:0}
+.lead{font-size:1.18rem;max-width:780px}
+.meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem}
+.pill{border:1px solid #6e7783;border-radius:999px;padding:.3rem .75rem}
+.progress-shell{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:10}
+.progress{height:8px;background:#e8e8ee}.bar{height:100%;width:0;background:var(--purple)}
+nav{max-width:980px;margin:auto;padding:.55rem 1rem;font-size:.92rem;color:var(--muted)}
+main{padding:2rem 1.25rem 5rem}
+section{max-width:980px;margin:0 auto 3.4rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.35rem;box-shadow:0 3px 14px rgba(20,30,50,.04)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.lens{border-top:7px solid var(--purple)}
+.lens:nth-child(2){border-top-color:var(--teal)}
+.lens:nth-child(3){border-top-color:var(--purple)}
+.callout{border-left:6px solid var(--teal);padding:1rem 1.2rem;background:#eef8f8;border-radius:10px}
+.warning{border-left:6px solid #c48a00;padding:1rem 1.2rem;background:var(--warn);border-radius:10px}
+button{font:inherit;font-weight:700;border:2px solid var(--purple);background:white;color:#3e2c8d;border-radius:12px;padding:.7rem 1rem;cursor:pointer}
+button:hover{background:var(--soft)}
+.choice{width:100%;text-align:left;margin:.35rem 0}
+.feedback{display:none;margin-top:.8rem;padding:.9rem;border-radius:10px;background:var(--good)}
+.feedback.show{display:block}
+.data-value{font-size:1.75rem;font-weight:700;color:#3f2d91;margin:.2rem 0 1rem}
+label{font-weight:700}
+select, textarea{width:100%;border:2px solid #b8c0ca;border-radius:10px;padding:.72rem;font:inherit;background:#fff}
+textarea{min-height:110px}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem}
+.result{margin-top:1rem;padding:1rem;border-radius:12px;background:#f4f6f8;display:none}
+.result.show{display:block}
+.code{font-family:Consolas,Monaco,monospace;background:#f0f1f4;border-radius:6px;padding:.08rem .35rem}
+.bigq{font-size:1.35rem;font-weight:700;color:#3f2d91}
+footer{background:#18202b;color:white;padding:2rem 1.25rem}
+@media(max-width:720px){.row{grid-template-columns:1fr}h2{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="eyebrow">Assignment 1 • Interactive Reading 2</div>
+<h1>What Kind of Data Is This?</h1>
+<p class="lead">This reading helps you practice the three labeling lenses from Deck 2: what the data means, how quantitative data behaves, and how a Python program might represent it.</p>
+<div class="meta"><span class="pill">Self-paced</span><span class="pill">About 20–25 min</span><span class="pill">Immediate feedback</span></div>
+</div>
+</header>
+
+<div class="progress-shell">
+  <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+  <nav aria-label="Reading progress">Use the challenges below to practice before Assignment 1.</nav>
+</div>
+
+<main>
+<section>
+<h2>1. Three lenses, three different questions</h2>
+<div class="grid">
+  <div class="card lens"><h3>Lens 1: Meaning</h3><p><strong>Qualitative or quantitative?</strong></p><p>Does the data describe a category/status, or does it represent a count or measurement?</p></div>
+  <div class="card lens"><h3>Lens 2: Behavior</h3><p><strong>Discrete or continuous?</strong></p><p>If the data is quantitative, is it something you count or something you measure?</p></div>
+  <div class="card lens"><h3>Lens 3: Representation</h3><p><strong>How might Python store it?</strong></p><p>For this assignment, focus on <span class="code">str</span>, <span class="code">int</span>, <span class="code">float</span>, and <span class="code">bool</span>.</p></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Important:</strong> these labels are related, but they do not mean the same thing. A piece of data can be quantitative, continuous, and represented as a float at the same time because each label answers a different question.</div>
+</section>
+
+<section>
+<h2>2. Meaning first</h2>
+<p>Before you look at formatting, ask what the value <strong>represents</strong>.</p>
+<div class="card">
+<p class="data-value">“In stock”</p>
+<p>Which label fits best?</p>
+<button class="choice meaning" data-answer="q">Quantitative</button>
+<button class="choice meaning" data-answer="qual">Qualitative</button>
+<div id="meaning-feedback" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>3. Numbers can fool you</h2>
+<div class="card">
+<p class="data-value">ZIP code: 10001</p>
+<p>It contains digits. Does that automatically make it quantitative?</p>
+<button class="choice zip" data-answer="yes">Yes</button>
+<button class="choice zip" data-answer="no">No</button>
+<div id="zip-feedback" class="feedback" tabindex="-1"></div>
+</div>
+<div class="warning" style="margin-top:1rem"><strong>Rule of thumb:</strong> if a number is being used as an identifier or label rather than an amount, it is not acting like quantitative data. ZIP codes, student IDs, and phone numbers are common examples.</div>
+</section>
+
+<section>
+<h2>4. Count or measure?</h2>
+<p>For this assignment:</p>
+<div class="grid">
+  <div class="card"><h3>Discrete</h3><p>Think <strong>count</strong>.</p><p>Examples: 327 likes, 14 customers, 6 messages.</p></div>
+  <div class="card"><h3>Continuous</h3><p>Think <strong>measure</strong>.</p><p>Examples: 3.7 miles, 72.5°F, 12.8 seconds.</p></div>
+</div>
+<div class="card" style="margin-top:1rem">
+<p class="bigq">Try it: “Followers: 428”</p>
+<button class="choice behavior" data-answer="d">Discrete</button>
+<button class="choice behavior" data-answer="c">Continuous</button>
+<div id="behavior-feedback" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>5. The display can hide the concept</h2>
+<div class="card">
+<p class="data-value">Weather app: 72°F</p>
+<p>The app shows a whole number. Is temperature discrete?</p>
+<button class="choice temp" data-answer="d">Yes, because 72 is a whole number</button>
+<button class="choice temp" data-answer="c">No, temperature is continuous</button>
+<div id="temp-feedback" class="feedback" tabindex="-1"></div>
+</div>
+<p class="callout"><strong>Why?</strong> Temperature is measured and can take values between 71°F and 72°F. The app may simply round what it displays. Classify the concept being measured, not just the formatting you see.</p>
+</section>
+
+<section>
+<h2>6. Think like Python</h2>
+<p>You do not need to code yet. You are only learning to recognize common ways a program might represent a value.</p>
+<div class="grid">
+  <div class="card"><h3><span class="code">str</span></h3><p>Text</p><p><span class="code">"Delayed"</span></p></div>
+  <div class="card"><h3><span class="code">int</span></h3><p>Whole number</p><p><span class="code">428</span></p></div>
+  <div class="card"><h3><span class="code">float</span></h3><p>Decimal number</p><p><span class="code">6.2</span></p></div>
+  <div class="card"><h3><span class="code">bool</span></h3><p>True/False</p><p><span class="code">True</span></p></div>
+</div>
+</section>
+
+<section>
+<h2>7. Python trap: quotation marks matter</h2>
+<div class="card">
+<p class="data-value"><span class="code">"12"</span></p>
+<p>What Python type is this most likely?</p>
+<button class="choice py" data-answer="int">int</button>
+<button class="choice py" data-answer="str">str</button>
+<button class="choice py" data-answer="float">float</button>
+<button class="choice py" data-answer="bool">bool</button>
+<div id="py-feedback" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>8. Classification game</h2>
+<p>For each example, choose all three labels. Then check your reasoning.</p>
+
+<div class="card classifier" data-correct="Quantitative|Discrete|int">
+  <p class="data-value">TikTok views: 2,438</p>
+  <div class="row">
+    <div><label>Meaning<select class="m"><option>Choose</option><option>Qualitative</option><option>Quantitative</option></select></label></div>
+    <div><label>Behavior<select class="b"><option>Choose</option><option>Discrete</option><option>Continuous</option><option>N/A</option></select></label></div>
+    <div><label>Python<select class="p"><option>Choose</option><option>str</option><option>int</option><option>float</option><option>bool</option></select></label></div>
+  </div>
+  <button class="check">Check</button><div class="result"></div>
+</div>
+
+<div class="card classifier" data-correct="Quantitative|Continuous|float" style="margin-top:1rem">
+  <p class="data-value">Distance: 6.2 miles</p>
+  <div class="row">
+    <div><label>Meaning<select class="m"><option>Choose</option><option>Qualitative</option><option>Quantitative</option></select></label></div>
+    <div><label>Behavior<select class="b"><option>Choose</option><option>Discrete</option><option>Continuous</option><option>N/A</option></select></label></div>
+    <div><label>Python<select class="p"><option>Choose</option><option>str</option><option>int</option><option>float</option><option>bool</option></select></label></div>
+  </div>
+  <button class="check">Check</button><div class="result"></div>
+</div>
+
+<div class="card classifier" data-correct="Qualitative|N/A|str" style="margin-top:1rem">
+  <p class="data-value">Delivery status: “Delayed”</p>
+  <div class="row">
+    <div><label>Meaning<select class="m"><option>Choose</option><option>Qualitative</option><option>Quantitative</option></select></label></div>
+    <div><label>Behavior<select class="b"><option>Choose</option><option>Discrete</option><option>Continuous</option><option>N/A</option></select></label></div>
+    <div><label>Python<select class="p"><option>Choose</option><option>str</option><option>int</option><option>float</option><option>bool</option></select></label></div>
+  </div>
+  <button class="check">Check</button><div class="result"></div>
+</div>
+
+<div class="card classifier" data-correct="Qualitative|N/A|bool" style="margin-top:1rem">
+  <p class="data-value">Store is open: True</p>
+  <div class="row">
+    <div><label>Meaning<select class="m"><option>Choose</option><option>Qualitative</option><option>Quantitative</option></select></label></div>
+    <div><label>Behavior<select class="b"><option>Choose</option><option>Discrete</option><option>Continuous</option><option>N/A</option></select></label></div>
+    <div><label>Python<select class="p"><option>Choose</option><option>str</option><option>int</option><option>float</option><option>bool</option></select></label></div>
+  </div>
+  <button class="check">Check</button><div class="result"></div>
+</div>
+</section>
+
+<section>
+<h2>9. One tricky example</h2>
+<div class="card">
+<p class="data-value">Rating: 4.8 stars</p>
+<p>Real datasets can represent ratings in different ways. For Assignment 1, what matters most is that you explain your reasoning.</p>
+<details>
+<summary>One reasonable classification</summary>
+<p><strong>Quantitative → Continuous → float</strong> can be a reasonable introductory classification if you are treating the displayed rating as a measured/averaged numeric value.</p>
+</details>
+<details>
+<summary>Why might real data work be more complicated?</summary>
+<p>Ratings can be collected as discrete individual scores, then averaged and displayed as a decimal. That means the original observations and the displayed summary may behave differently. This is exactly why context matters.</p>
+</details>
+</div>
+</section>
+
+<section>
+<h2>10. Practice with your own possible Data Find</h2>
+<div class="card">
+<label for="mine">Write one piece of data you might use in Assignment 1:</label>
+<textarea id="mine" placeholder="Example: 8 minutes until my train arrives"></textarea>
+<div class="row" style="margin-top:1rem">
+  <div><label>Meaning<select><option>Choose</option><option>Qualitative</option><option>Quantitative</option></select></label></div>
+  <div><label>Behavior<select><option>Choose</option><option>Discrete</option><option>Continuous</option><option>N/A</option></select></label></div>
+  <div><label>Python<select><option>Choose</option><option>str</option><option>int</option><option>float</option><option>bool</option></select></label></div>
+</div>
+<label for="why" style="display:block;margin-top:1rem">Explain your reasoning:</label>
+<textarea id="why" placeholder="I classified it this way because..."></textarea>
+<p style="font-size:.92rem;color:var(--muted)">These notes stay in your browser and are not submitted.</p>
+</div>
+</section>
+
+<section>
+<h2>11. Your assignment shortcut</h2>
+<div class="grid">
+  <div class="card"><h3>1. Meaning</h3><p>Category/status? → <strong>Qualitative</strong><br>Count/measurement? → <strong>Quantitative</strong></p></div>
+  <div class="card"><h3>2. Behavior</h3><p>If quantitative:<br>Count → <strong>Discrete</strong><br>Measure → <strong>Continuous</strong><br>If qualitative → <strong>N/A</strong></p></div>
+  <div class="card"><h3>3. Python</h3><p>Text → <span class="code">str</span><br>Whole number → <span class="code">int</span><br>Decimal → <span class="code">float</span><br>True/False → <span class="code">bool</span></p></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Best habit:</strong> ask “What does this data actually mean?” before you classify it.</div>
+</section>
+
+<section>
+<h2>12. Ready for Assignment 1</h2>
+<p>For each of your three real-world examples, choose at least one piece of data and label it using the three lenses. Then use the 5W+H framework from Deck 1 to investigate what is behind it.</p>
+<p class="bigq">Meaning first. Classification second. Reasoning always.</p>
+</section>
+</main>
+
+<footer>
+<div class="wrap"><strong>Assignment 1 • Interactive Reading 2</strong><br>Use this reading as a reference whenever you get stuck on a label.</div>
+</footer>
+
+<script>
+const bar=document.getElementById('bar');
+function prog(){const d=document.documentElement; const max=d.scrollHeight-d.clientHeight; bar.style.width=(max?d.scrollTop/max*100:100)+'%'}
+document.addEventListener('scroll',prog,{passive:true}); prog();
+
+function show(id,msg){
+  const el=document.getElementById(id); el.innerHTML=msg; el.classList.add('show'); el.focus();
+}
+document.querySelectorAll('.meaning').forEach(b=>b.addEventListener('click',()=>show('meaning-feedback',
+  b.dataset.answer==='qual'
+  ? '<strong>Correct.</strong> “In stock” is a status, so it is qualitative.'
+  : '<strong>Try again.</strong> The phrase does not represent an amount. It records a status.'
+)));
+document.querySelectorAll('.zip').forEach(b=>b.addEventListener('click',()=>show('zip-feedback',
+  b.dataset.answer==='no'
+  ? '<strong>Correct.</strong> 10001 acts as an identifier, not an amount. In data work, a ZIP code is usually treated as categorical/text data.'
+  : '<strong>Not quite.</strong> Digits do not automatically make something quantitative. Ask what the value means.'
+)));
+document.querySelectorAll('.behavior').forEach(b=>b.addEventListener('click',()=>show('behavior-feedback',
+  b.dataset.answer==='d'
+  ? '<strong>Correct.</strong> Followers are counted, so this is discrete quantitative data.'
+  : '<strong>Try again.</strong> A follower count moves in separate counted values.'
+)));
+document.querySelectorAll('.temp').forEach(b=>b.addEventListener('click',()=>show('temp-feedback',
+  b.dataset.answer==='c'
+  ? '<strong>Correct.</strong> Temperature is continuous even if the app rounds the display to a whole number.'
+  : '<strong>Not quite.</strong> The display format does not change the fact that temperature is measured continuously.'
+)));
+document.querySelectorAll('.py').forEach(b=>b.addEventListener('click',()=>show('py-feedback',
+  b.dataset.answer==='str'
+  ? '<strong>Correct.</strong> Quotation marks indicate text, so <span class="code">"12"</span> is a string.'
+  : '<strong>Try again.</strong> Look at the quotation marks. Python treats the characters inside them as text.'
+)));
+
+document.querySelectorAll('.classifier').forEach(card=>{
+  card.querySelector('.check').addEventListener('click',()=>{
+    const chosen=[card.querySelector('.m').value,card.querySelector('.b').value,card.querySelector('.p').value].join('|');
+    const correct=card.dataset.correct;
+    const r=card.querySelector('.result'); r.classList.add('show');
+    if(chosen===correct){
+      r.innerHTML='<strong>Nice work.</strong> Your three labels match the reference answer.';
+      r.style.background='#eaf7f3';
+    }else{
+      const parts=correct.split('|');
+      r.innerHTML='<strong>Check your reasoning.</strong> A strong reference answer is: <strong>'+parts[0]+' → '+parts[1]+' → '+parts[2]+'</strong>. Ask what the value means first, then whether it is counted/measured, then how Python might represent it.';
+      r.style.background='#fff6df';
+    }
+  });
+});
+</script>
+</body>
+</html>
