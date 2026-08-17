@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Don’t Believe the Hype | Assignment 2 Interactive Reading 2</title>
+<style>
+:root{
+  --ink:#17202b;--muted:#596575;--paper:#fbfcfe;--card:#fff;
+  --purple:#674cb4;--teal:#137f88;--blue:#2e5bad;--red:#9b3d45;
+  --gold:#b47d14;--green:#28785b;--line:#dce3ea;--soft:#f3f6fa;
+  --good:#e9f7f2;--warn:#fff5dc;--bad:#fbecef;--focus:#ffbf47
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:#3f2d91}
+a:focus,button:focus,select:focus,textarea:focus,input:focus{outline:4px solid var(--focus);outline-offset:3px}
+header{background:var(--ink);color:white;padding:3rem 1.25rem}
+.wrap,section{max-width:980px;margin:auto}
+.eyebrow{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d6cdf5}
+h1{font-size:clamp(2.35rem,6vw,4.6rem);line-height:1.03;margin:.35rem 0 1rem}
+h2{font-size:2rem;line-height:1.15;margin-top:0}
+h3{margin-top:0}
+.lead{font-size:1.2rem;max-width:800px}
+.meta{display:flex;gap:.7rem;flex-wrap:wrap}.pill{border:1px solid #748091;border-radius:999px;padding:.3rem .75rem}
+.progress-shell{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:20}
+.progress{height:8px;background:#e8edf2}.bar{height:100%;width:0;background:var(--purple)}
+nav{max-width:980px;margin:auto;padding:.55rem 1rem;color:var(--muted);font-size:.92rem}
+main{padding:2rem 1.25rem 5rem}section{margin-bottom:3.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.35rem;box-shadow:0 3px 14px rgba(20,30,50,.04)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.claim{font-size:1.45rem;font-weight:800;color:#3f2d91}
+.callout{border-left:6px solid var(--teal);padding:1rem 1.2rem;background:#eef8f8;border-radius:10px}
+.warning{border-left:6px solid var(--gold);padding:1rem 1.2rem;background:var(--warn);border-radius:10px}
+.danger{border-left:6px solid var(--red);padding:1rem 1.2rem;background:var(--bad);border-radius:10px}
+button{font:inherit;font-weight:700;border:2px solid var(--purple);background:white;color:#3e2c8d;border-radius:12px;padding:.7rem 1rem;cursor:pointer}
+button:hover{background:#f3f0fb}.choice{width:100%;text-align:left;margin:.35rem 0}
+.feedback{display:none;margin-top:.8rem;padding:.9rem;border-radius:10px;background:var(--good)}.feedback.show{display:block}
+.rank-card{border-left:7px solid var(--blue)}
+.tag{display:inline-block;border-radius:999px;padding:.2rem .55rem;font-size:.85rem;font-weight:700;background:#eef2f7;color:#364354}
+.stake-btn{width:100%;margin:.25rem 0}.stake-result{display:none;margin-top:.8rem}.stake-result.show{display:block}
+.scenario{padding:1rem;border:1px solid var(--line);border-radius:14px;background:white;margin:.8rem 0}
+select,textarea,input[type=text]{width:100%;border:2px solid #b8c0ca;border-radius:10px;padding:.75rem;font:inherit;background:white}
+textarea{min-height:110px}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.big-output{font-size:1.25rem;font-weight:700;color:#3f2d91;padding:1rem;background:#f3f0fb;border-radius:12px;display:none}.big-output.show{display:block}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;margin:.7rem 0}
+summary{font-weight:700;cursor:pointer}
+.checklist{list-style:none;padding:0}.checklist li{padding:.65rem 0;border-bottom:1px solid var(--line)}
+footer{background:var(--ink);color:white;padding:2rem 1.25rem}
+@media(max-width:720px){.builder{grid-template-columns:1fr}h2{font-size:1.65rem}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+  <div class="eyebrow">Assignment 2 • Interactive Reading 2</div>
+  <h1>Don’t Believe the Hype</h1>
+  <p class="lead">AI claims can sound exciting, scary, or both. Your job is not to react first. Your job is to investigate the claim, the evidence, the data, the people, and what is still unknown.</p>
+  <div class="meta"><span class="pill">Self-paced</span><span class="pill">About 25–35 min</span><span class="pill">Source evaluation practice</span></div>
+</div>
+</header>
+
+<div class="progress-shell">
+  <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+  <nav>Move through the activities in order. Most challenges give immediate feedback.</nav>
+</div>
+
+<main>
+
+<section>
+<h2>1. Two headlines. One technology.</h2>
+<div class="grid">
+  <div class="card">
+    <span class="tag">Headline A</span>
+    <p class="claim">“AI tutoring is transforming education.”</p>
+  </div>
+  <div class="card">
+    <span class="tag">Headline B</span>
+    <p class="claim">“AI tutoring is putting students at risk.”</p>
+  </div>
+</div>
+<div class="card" style="margin-top:1rem">
+  <p><strong>Which headline do you believe more?</strong></p>
+  <button class="choice opening" data-a="a">Headline A</button>
+  <button class="choice opening" data-a="b">Headline B</button>
+  <button class="choice opening" data-a="neither">I don’t have enough evidence yet</button>
+  <div id="openingfb" class="feedback" tabindex="-1"></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Core habit:</strong> a claim can be interesting without being proven. Before deciding what you think, ask what evidence supports it.</div>
+</section>
+
+<section>
+<h2>2. Claim ≠ evidence</h2>
+<div class="card">
+  <p class="claim">“Workers using our AI are 40% more productive.”</p>
+  <p>Which follow-up question would be most useful?</p>
+  <button class="choice productivity" data-a="wow">“That sounds impressive. What AI is it?”</button>
+  <button class="choice productivity" data-a="ask">“40% compared with what, doing which task, measured how, and with which workers?”</button>
+  <button class="choice productivity" data-a="reject">“AI statistics are probably exaggerated.”</button>
+  <div id="productivityfb" class="feedback" tabindex="-1"></div>
+</div>
+<details><summary>What else might you ask?</summary>
+<p>Did quality improve or decline? How large was the sample? Was there a control or comparison group? Who funded the study? Were workers already familiar with the tool? Did every worker benefit equally?</p>
+</details>
+</section>
+
+<section>
+<h2>3. Evidence Detective</h2>
+<p>Different kinds of evidence can be useful for different purposes. The goal is not to memorize one perfect ranking—it is to know what each kind can and cannot establish.</p>
+
+<div class="grid">
+  <div class="card rank-card"><h3>Company demo</h3><p><strong>Good for:</strong> seeing what might be possible.</p><p><strong>Weak for:</strong> proving reliability across many situations.</p></div>
+  <div class="card rank-card"><h3>Customer testimonial</h3><p><strong>Good for:</strong> understanding one person’s experience.</p><p><strong>Weak for:</strong> proving the experience is typical.</p></div>
+  <div class="card rank-card"><h3>Expert interview</h3><p><strong>Good for:</strong> interpretation and context.</p><p><strong>Ask:</strong> what evidence supports the expert’s conclusion?</p></div>
+  <div class="card rank-card"><h3>News report citing research</h3><p><strong>Good for:</strong> accessible explanation.</p><p><strong>Ask:</strong> can you trace the claim back to the original study?</p></div>
+  <div class="card rank-card"><h3>Research study / benchmark</h3><p><strong>Good for:</strong> structured testing.</p><p><strong>Ask:</strong> does the test match the real-world use?</p></div>
+  <div class="card rank-card"><h3>Real-world outcome data</h3><p><strong>Good for:</strong> seeing what happens in practice.</p><p><strong>Ask:</strong> compared with what, and for whom?</p></div>
+</div>
+</section>
+
+<section>
+<h2>4. The same AI can look different depending on who you are</h2>
+<p>Imagine a company uses an AI system to help screen job applications. Explore the same system from four perspectives.</p>
+<div class="grid">
+  <div class="card"><button class="stake-btn" data-target="applicant">Applicant</button><div id="applicant" class="stake-result"><strong>Possible benefit:</strong> faster processing. <br><strong>Possible concern:</strong> you may not know how your application was evaluated or whether the system works equally well for people with different backgrounds.</div></div>
+  <div class="card"><button class="stake-btn" data-target="recruiter">Recruiter</button><div id="recruiter" class="stake-result"><strong>Possible benefit:</strong> faster review of many applications. <br><strong>Possible concern:</strong> over-relying on the score could cause qualified candidates to be missed.</div></div>
+  <div class="card"><button class="stake-btn" data-target="company">Company</button><div id="company" class="stake-result"><strong>Possible benefit:</strong> lower time/cost per application. <br><strong>Possible concern:</strong> poor system design could create legal, reputational, or fairness problems.</div></div>
+  <div class="card"><button class="stake-btn" data-target="datascientist">Data professional</button><div id="datascientist" class="stake-result"><strong>Possible benefit:</strong> build a system that helps prioritize work. <br><strong>Possible concern:</strong> choosing labels, training data, features, and metrics can shape who is helped or harmed.</div></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>Ask WHO every time.</strong> “Does this AI work?” is incomplete without “for whom, under what conditions, and with what consequences?”</div>
+</section>
+
+<section>
+<h2>5. What could go wrong?</h2>
+<p>Choose the <strong>primary</strong> concern in each scenario. More than one risk can exist, but select the best starting point.</p>
+
+<div class="scenario">
+  <p><strong>Scenario A:</strong> A chatbot invents a research citation that does not exist.</p>
+  <button class="choice risk" data-group="r1" data-a="accuracy">Accuracy / hallucination</button>
+  <button class="choice risk" data-group="r1" data-a="privacy">Privacy</button>
+  <button class="choice risk" data-group="r1" data-a="bias">Bias / fairness</button>
+  <div id="r1" class="feedback" tabindex="-1"></div>
+</div>
+
+<div class="scenario">
+  <p><strong>Scenario B:</strong> A facial analysis system has much higher error rates for some demographic groups than others.</p>
+  <button class="choice risk" data-group="r2" data-a="privacy">Privacy</button>
+  <button class="choice risk" data-group="r2" data-a="bias">Bias / fairness</button>
+  <button class="choice risk" data-group="r2" data-a="accuracy">General accuracy only</button>
+  <div id="r2" class="feedback" tabindex="-1"></div>
+</div>
+
+<div class="scenario">
+  <p><strong>Scenario C:</strong> An employee uploads confidential customer records into a public AI tool without approval.</p>
+  <button class="choice risk" data-group="r3" data-a="privacy">Privacy / confidentiality</button>
+  <button class="choice risk" data-group="r3" data-a="bias">Bias / fairness</button>
+  <button class="choice risk" data-group="r3" data-a="work">Workforce change</button>
+  <div id="r3" class="feedback" tabindex="-1"></div>
+</div>
+
+<div class="scenario">
+  <p><strong>Scenario D:</strong> An AI-generated audio clip imitates a real person’s voice and is shared as if it were authentic.</p>
+  <button class="choice risk" data-group="r4" data-a="integrity">Identity / information integrity</button>
+  <button class="choice risk" data-group="r4" data-a="work">Workforce change</button>
+  <button class="choice risk" data-group="r4" data-a="privacy">Privacy only</button>
+  <div id="r4" class="feedback" tabindex="-1"></div>
+</div>
+
+<div class="warning"><strong>Remember:</strong> labels help organize your thinking, but real AI problems often overlap. A single scenario can involve accuracy, privacy, bias, security, identity, and human decision-making at the same time.</div>
+</section>
+
+<section>
+<h2>6. Source Credibility Challenge</h2>
+<p>Which source would you investigate first if you wanted to understand whether AI is changing customer-support work?</p>
+
+<div class="card">
+  <button class="choice source" data-a="viral"><strong>Source A:</strong> “AI WILL REPLACE 80% OF JOBS NEXT YEAR!!!” — viral short-form video with no source linked</button>
+  <button class="choice source" data-a="ceo"><strong>Source B:</strong> CEO interview — “Our AI completely changes customer service.”</button>
+  <button class="choice source" data-a="study"><strong>Source C:</strong> Article describing a study that measured how customer-support workers performed with and without an AI assistant, with the study linked</button>
+  <div id="sourcefb" class="feedback" tabindex="-1"></div>
+</div>
+
+<div class="callout" style="margin-top:1rem"><strong>This is not “social media bad, research good.”</strong> Any source can contain useful information. Your job is to trace major claims back to evidence, consider incentives/expertise, and corroborate important conclusions.</div>
+</section>
+
+<section>
+<h2>7. Put two sources in conversation</h2>
+<div class="grid">
+  <div class="card">
+    <span class="tag">Source A</span>
+    <h3>AI tutoring opportunity</h3>
+    <p>A founder demonstrates an AI tutor and shares testimonials from students who say they received faster, personalized help.</p>
+    <p><strong>Evidence:</strong> demonstration + testimonials.</p>
+  </div>
+  <div class="card">
+    <span class="tag">Source B</span>
+    <h3>AI tutoring complication</h3>
+    <p>A news report interviews teachers and researchers about benefits for practice but also reports concerns about incorrect answers and student data.</p>
+    <p><strong>Evidence:</strong> interviews + cited research.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:1rem">
+  <p><strong>Which is the strongest next move?</strong></p>
+  <button class="choice compare" data-a="pick">Choose the source that sounds more convincing and ignore the other.</button>
+  <button class="choice compare" data-a="investigate">Identify each claim, examine the evidence, find where they agree/disagree, and decide what needs verification.</button>
+  <button class="choice compare" data-a="neutral">Refuse to form any opinion because both perspectives exist.</button>
+  <div id="comparefb" class="feedback" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>8. Build your Assignment 2 Big Question</h2>
+<p>Your two sources should help you explore one meaningful tension. Start with a domain, then choose the tension you care about.</p>
+
+<div class="card">
+<div class="builder">
+  <div>
+    <label for="topic"><strong>Choose a topic</strong></label>
+    <select id="topic">
+      <option value="">Choose...</option>
+      <option>Creativity</option>
+      <option>Healthcare</option>
+      <option>Education</option>
+      <option>Jobs</option>
+      <option>Finance</option>
+      <option>Sports</option>
+      <option>Social Media</option>
+      <option>Shopping</option>
+      <option>Cybersecurity</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div>
+    <label for="tension"><strong>Choose a tension</strong></label>
+    <select id="tension">
+      <option value="">Choose...</option>
+      <option value="trust">Trust</option>
+      <option value="access">Access vs. risk</option>
+      <option value="human">Human judgment vs. automation</option>
+      <option value="fairness">Fairness</option>
+      <option value="privacy">Privacy</option>
+      <option value="quality">Speed vs. quality</option>
+    </select>
+  </div>
+</div>
+<button id="build" style="margin-top:1rem">Generate a question starter</button>
+<div id="questionout" class="big-output" tabindex="-1"></div>
+
+<label for="myq" style="display:block;margin-top:1rem"><strong>Now write your own Big Question:</strong></label>
+<textarea id="myq" placeholder="Example: When should people trust AI recommendations in healthcare?"></textarea>
+</div>
+</section>
+
+<section>
+<h2>9. Rehearse the Assignment 2 analysis</h2>
+<p>Use this mini-template on one source you are considering.</p>
+<div class="card">
+  <label for="claim"><strong>CLAIM — What is the source saying?</strong></label>
+  <textarea id="claim"></textarea>
+
+  <label for="data" style="display:block;margin-top:1rem"><strong>DATA — Where is the data in this story?</strong></label>
+  <textarea id="data"></textarea>
+
+  <label for="people" style="display:block;margin-top:1rem"><strong>PEOPLE — Who benefits, who could be affected, and who has responsibility?</strong></label>
+  <textarea id="people"></textarea>
+
+  <label for="evidence" style="display:block;margin-top:1rem"><strong>EVIDENCE — What does the source use to support the claim?</strong></label>
+  <textarea id="evidence"></textarea>
+
+  <label for="limits" style="display:block;margin-top:1rem"><strong>LIMITS — What is missing, uncertain, or worth verifying?</strong></label>
+  <textarea id="limits"></textarea>
+</div>
+</section>
+
+<section>
+<h2>10. Your source hunt starts now</h2>
+<ul class="checklist">
+  <li><strong>Source 1 — Opportunity:</strong> Find a credible audio/audiovisual source showing how AI could help, improve, create, or solve.</li>
+  <li><strong>Source 2 — Concern:</strong> Find a credible source exploring a risk, limitation, unintended consequence, or complication.</li>
+  <li><strong>For both:</strong> Identify the claim, data connection, people, evidence, and missing information.</li>
+  <li><strong>Compare:</strong> Where do they agree? Where do they disagree? Which evidence is stronger and why?</li>
+  <li><strong>Decide:</strong> What do <em>you</em> think after investigating both?</li>
+</ul>
+<div class="callout"><strong>The goal is not balance for the sake of balance.</strong> The goal is informed judgment: understand the opportunity, understand the concern, evaluate the evidence, and develop a position you can defend.</div>
+</section>
+
+<section>
+<h2>11. Final reminder</h2>
+<p class="claim">Don’t ask only: “Is AI good or bad?”</p>
+<div class="grid">
+  <div class="card"><h3>Ask what it does.</h3><p>What is the actual task or claim?</p></div>
+  <div class="card"><h3>Follow the data.</h3><p>What information shapes the system or its output?</p></div>
+  <div class="card"><h3>Look at people.</h3><p>Who benefits, who carries risk, and who decides?</p></div>
+  <div class="card"><h3>Demand evidence.</h3><p>What supports the claim—and what still needs verification?</p></div>
+</div>
+</section>
+
+</main>
+
+<footer><div class="wrap"><strong>Assignment 2 • Interactive Reading 2</strong><br>Don’t believe the hype. Investigate it.</div></footer>
+
+<script>
+const bar=document.getElementById('bar');
+function progress(){const d=document.documentElement,max=d.scrollHeight-d.clientHeight;bar.style.width=(max?d.scrollTop/max*100:100)+'%'}
+document.addEventListener('scroll',progress,{passive:true});progress();
+
+function show(id,msg){
+  const e=document.getElementById(id);
+  e.innerHTML=msg;
+  e.classList.add('show');
+  e.focus();
+}
+
+document.querySelectorAll('.opening').forEach(b=>b.onclick=()=>show('openingfb',
+  b.dataset.a==='neither'
+  ? '<strong>Exactly.</strong> Either headline could contain truth, exaggeration, or missing context. You need evidence before deciding which claim is stronger.'
+  : '<strong>That reaction is understandable—but you do not have enough evidence yet.</strong> A headline tells you the claim, not whether the claim is well supported.'
+));
+
+document.querySelectorAll('.productivity').forEach(b=>b.onclick=()=>show('productivityfb',
+  b.dataset.a==='ask'
+  ? '<strong>Best choice.</strong> Those questions define the comparison, task, measurement, and population. Without them, “40% more productive” is hard to interpret.'
+  : '<strong>Try again.</strong> Excitement or skepticism alone does not test the claim. Ask how the number was produced and compared.'
+));
+
+document.querySelectorAll('.stake-btn').forEach(b=>b.onclick=()=>{
+  const e=document.getElementById(b.dataset.target);
+  e.classList.toggle('show');
+});
+
+const riskAnswers={r1:'accuracy',r2:'bias',r3:'privacy',r4:'integrity'};
+const riskMsgs={
+ r1:'<strong>Yes.</strong> The starting issue is accuracy/hallucination: the system produced unsupported information as if it were real.',
+ r2:'<strong>Yes.</strong> The key issue is fairness/bias because performance differs substantially across groups.',
+ r3:'<strong>Yes.</strong> The immediate issue is privacy/confidentiality: sensitive records were shared with an unapproved system.',
+ r4:'<strong>Yes.</strong> The primary issue is identity/information integrity because generated media is being presented as authentic.'
+};
+document.querySelectorAll('.risk').forEach(b=>b.onclick=()=>{
+ const g=b.dataset.group;
+ show(g,b.dataset.a===riskAnswers[g]?riskMsgs[g]:'<strong>Not the best starting point.</strong> Other risks may exist, but choose the concern most directly described by the scenario.');
+});
+
+document.querySelectorAll('.source').forEach(b=>b.onclick=()=>show('sourcefb',
+ b.dataset.a==='study'
+ ? '<strong>Strong starting point.</strong> The source points to measured evidence and lets you trace the claim to an original study. You should still inspect the study design and context.'
+ : b.dataset.a==='ceo'
+ ? '<strong>Useful, but incomplete.</strong> The CEO may provide insight into the product and goals, but also has an incentive to promote it. Ask what independent evidence supports the claim.'
+ : '<strong>Weak starting point.</strong> A viral claim can still point toward a real issue, but without evidence or a source trail, you would need substantial verification.'
+));
+
+document.querySelectorAll('.compare').forEach(b=>b.onclick=()=>show('comparefb',
+ b.dataset.a==='investigate'
+ ? '<strong>Exactly.</strong> Assignment 2 is about comparison and evaluation—not choosing a side before you inspect the evidence.'
+ : '<strong>Try again.</strong> Your goal is neither instant agreement nor permanent neutrality. Investigate both sources, then develop a position from the evidence.'
+));
+
+const templates={
+  "Creativity":{
+    trust:"When should people trust AI-generated creative work?",
+    access:"Can AI make creative work more accessible without creating new risks for creators?",
+    human:"How should human creativity and AI tools work together?",
+    fairness:"Who benefits most from AI creative tools—and who may be left out?",
+    privacy:"What data should AI creative tools be allowed to learn from or use?",
+    quality:"Does AI make creative work faster without reducing quality or originality?"
+  },
+  "Healthcare":{
+    trust:"When should patients and clinicians trust an AI recommendation?",
+    access:"Can AI expand access to healthcare without increasing risk?",
+    human:"What decisions should AI support—and which should remain primarily human?",
+    fairness:"How can healthcare AI avoid working better for some groups than others?",
+    privacy:"How should health data be protected when AI systems use it?",
+    quality:"Can AI speed up healthcare work without reducing quality or safety?"
+  },
+  "Education":{
+    trust:"When should students and teachers trust an AI tutor or assistant?",
+    access:"Can AI expand access to learning support without creating new risks?",
+    human:"What parts of teaching and learning should remain deeply human?",
+    fairness:"Could AI expand learning opportunity—or widen existing gaps?",
+    privacy:"What student data should educational AI tools be allowed to use?",
+    quality:"Can AI make learning faster without making learning shallower?"
+  },
+  "Jobs":{
+    trust:"When should workers trust AI recommendations at work?",
+    access:"Can AI expand opportunity without creating new forms of exclusion?",
+    human:"Which work tasks should AI automate, and which should humans lead?",
+    fairness:"Who gains from AI productivity—and who bears the cost?",
+    privacy:"How much employee data should workplace AI systems use?",
+    quality:"Does AI make work faster without making the work worse?"
+  }
+};
+
+document.getElementById('build').onclick=()=>{
+  const topic=document.getElementById('topic').value;
+  const tension=document.getElementById('tension').value;
+  const out=document.getElementById('questionout');
+  let text='';
+  if(!topic||!tension){text='Choose both a topic and a tension first.';}
+  else if(templates[topic]&&templates[topic][tension]){text=templates[topic][tension];}
+  else{
+    const label=document.getElementById('tension').selectedOptions[0].text;
+    text=`How should we think about ${label.toLowerCase()} when AI is used in ${topic.toLowerCase()}?`;
+  }
+  out.textContent=text; out.classList.add('show'); out.focus();
+};
+</script>
+</body>
+</html>
