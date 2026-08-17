@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choose Your Data Adventure | Assignment 3</title>
+<style>
+:root{--ink:#18212d;--muted:#5c6878;--paper:#fbfcfe;--card:#fff;--purple:#674cb4;--teal:#137f88;--blue:#2f5bad;--green:#287a5b;--gold:#b77e12;--red:#9d3e46;--line:#dce3ea;--soft:#f4f6fa;--focus:#ffbf47}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:#402d91}button,select,textarea,input{font:inherit}button:focus,a:focus,select:focus,textarea:focus,input:focus{outline:4px solid var(--focus);outline-offset:3px}
+header{background:var(--ink);color:white;padding:3rem 1.25rem}.wrap,section{max-width:1000px;margin:auto}
+.eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#d8d0f4}h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1;margin:.4rem 0 1rem}
+h2{font-size:2rem;line-height:1.15;margin-top:0}.lead{font-size:1.2rem;max-width:820px}.meta{display:flex;gap:.7rem;flex-wrap:wrap}.pill{border:1px solid #758192;border-radius:999px;padding:.3rem .75rem}
+.progress-shell{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}.progress{height:8px;background:#e8edf2}.bar{height:100%;width:0;background:var(--purple)}nav{max-width:1000px;margin:auto;padding:.55rem 1rem;color:var(--muted);font-size:.92rem}
+main{padding:2rem 1.25rem 5rem}section{margin-bottom:3.7rem}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.3rem;box-shadow:0 3px 14px rgba(20,30,50,.04)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.callout{border-left:6px solid var(--teal);padding:1rem 1.2rem;background:#eef8f8;border-radius:10px}.warning{border-left:6px solid var(--gold);padding:1rem 1.2rem;background:#fff5dc;border-radius:10px}
+button{font-weight:700;border:2px solid var(--purple);background:white;color:#3e2c8d;border-radius:12px;padding:.75rem 1rem;cursor:pointer}.choice{width:100%;text-align:left;margin:.35rem 0}.choice:hover,.domain:hover{background:#f4f1fb}
+.feedback{display:none;margin-top:.8rem;padding:.9rem;border-radius:10px;background:#eaf7f2}.feedback.show{display:block}
+.rolebox{border-top:7px solid var(--purple)}.rolebox.engineer{border-color:var(--blue)}.rolebox.analytics{border-color:var(--teal)}.rolebox.scientist{border-color:var(--green)}
+.domain{min-height:130px;width:100%;text-align:left}.domain strong{display:block;font-size:1.1rem;margin-bottom:.3rem}
+.domain-panel{display:none;margin-top:1rem}.domain-panel.show{display:block}
+.tag{display:inline-block;padding:.2rem .55rem;border-radius:999px;background:#edf1f6;font-size:.83rem;font-weight:700;color:#3e4b5b}
+textarea,select{width:100%;border:2px solid #b8c0ca;border-radius:10px;padding:.75rem;background:#fff}textarea{min-height:105px}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.result{display:none;margin-top:1rem;padding:1.2rem;border-radius:14px;background:#f3f0fb}.result.show{display:block}
+.score{font-size:1.1rem}.meter{height:12px;background:#e8edf2;border-radius:999px;overflow:hidden;margin:.25rem 0 .8rem}.fill{height:100%;background:var(--purple);width:0}
+footer{background:var(--ink);color:#fff;padding:2rem 1.25rem}@media(max-width:720px){.builder{grid-template-columns:1fr}h2{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Assignment 3 • Interactive Reading</div>
+<h1>Choose Your Data Adventure</h1>
+<p class="lead">You have met the roles. Now explore the kinds of problems that pull you in, visit different worlds where data professionals work, and start building your own future-data scenario.</p>
+<div class="meta"><span class="pill">Self-paced</span><span class="pill">About 30–40 min</span><span class="pill">Career exploration—not a personality test</span></div>
+</div></header>
+<div class="progress-shell"><div class="progress"><div class="bar" id="bar"></div></div><nav>Your choices are for exploration. There are no “correct” careers.</nav></div>
+
+<main>
+<section>
+<h2>1. What kind of problem grabs you?</h2>
+<p>A music app has millions of listening records. This week, engagement suddenly dropped. Which problem would you most want to tackle?</p>
+<div class="card">
+<button class="choice energy" data-role="analyst">A. “I want to figure out what changed, where it changed, and why.”</button>
+<button class="choice energy" data-role="scientist">B. “Could we predict which listeners are likely to stop using the app?”</button>
+<button class="choice energy" data-role="engineer">C. “Before anything else—did all of yesterday’s listening data actually arrive?”</button>
+<button class="choice energy" data-role="analytics">D. “Do all teams even mean the same thing when they say ‘engaged listener’?”</button>
+<div id="energyfb" class="feedback" tabindex="-1"></div>
+</div>
+<div class="callout" style="margin-top:1rem"><strong>This is not a career test.</strong> Your choice only reveals which problem sounded interesting in this moment. Real professionals can enjoy several kinds of work.</div>
+</section>
+
+<section>
+<h2>2. Four roles, four problem lenses</h2>
+<div class="grid">
+<div class="card rolebox"><h3>Data Analyst</h3><p><strong>Pull:</strong> investigate and explain.</p><p>“What happened? Where? For whom? What can we learn?”</p></div>
+<div class="card rolebox engineer"><h3>Data Engineer</h3><p><strong>Pull:</strong> build reliable systems.</p><p>“How does the data get here, and can people depend on it?”</p></div>
+<div class="card rolebox analytics"><h3>Analytics Engineer</h3><p><strong>Pull:</strong> create trusted data.</p><p>“How do we turn raw data into clean, reusable metrics and datasets?”</p></div>
+<div class="card rolebox scientist"><h3>Data Scientist</h3><p><strong>Pull:</strong> model possibilities.</p><p>“Can we predict, experiment, classify, or optimize?”</p></div>
+</div>
+</section>
+
+<section>
+<h2>3. Collaboration challenge</h2>
+<p>A shopping company launches a new recommendation feature. Customers complain that recommendations are strange, and the dashboard tracking the launch has missing data.</p>
+<div class="card">
+<p><strong>Who owns the problem?</strong></p>
+<button class="choice collab" data-a="one">The Data Engineer—the missing data means this is only an engineering problem.</button>
+<button class="choice collab" data-a="scientist">The Data Scientist—the recommendations use models, so only data science matters.</button>
+<button class="choice collab" data-a="team">Potentially several roles. Different parts of the problem require different expertise.</button>
+<div id="collabfb" class="feedback" tabindex="-1"></div>
+</div>
+<details><summary>See one possible team response</summary>
+<p>A <strong>data engineer</strong> could investigate missing event data. An <strong>analytics engineer</strong> could verify the launch metrics and definitions. A <strong>data analyst</strong> could identify which customers/products are seeing poor results. A <strong>data scientist</strong> could evaluate the recommendation model. Product, design, engineering, and other teams could also be involved.</p>
+</details>
+</section>
+
+<section>
+<h2>4. Pick a world</h2>
+<p>Choose any domain that catches your attention. Each card opens a data problem—not a job description.</p>
+<div class="grid">
+<button class="domain" data-domain="sports"><strong>🏀 Sports</strong>What could tracking data reveal about performance?</button>
+<button class="domain" data-domain="beauty"><strong>💄 Beauty</strong>Who might a product or experience be failing to serve?</button>
+<button class="domain" data-domain="gaming"><strong>🎮 Gaming</strong>Where do players get stuck, leave, or come back?</button>
+<button class="domain" data-domain="health"><strong>🏥 Healthcare</strong>How can data support better decisions without ignoring risk?</button>
+<button class="domain" data-domain="music"><strong>🎵 Music</strong>Why do people skip, save, replay, and discover?</button>
+<button class="domain" data-domain="finance"><strong>💰 Finance</strong>Which transactions or patterns deserve attention?</button>
+<button class="domain" data-domain="energy"><strong>⚡ Energy</strong>How can systems respond to changing demand?</button>
+<button class="domain" data-domain="shopping"><strong>🛍️ Shopping</strong>What makes an experience useful—or frustrating?</button>
+<button class="domain" data-domain="nonprofit"><strong>❤️ Nonprofits</strong>Where is need greatest, and where could resources matter most?</button>
+<button class="domain" data-domain="cyber"><strong>🔐 Cybersecurity</strong>Which activity could signal a threat?</button>
+<button class="domain" data-domain="logistics"><strong>🚚 Logistics</strong>How can goods move faster and more efficiently?</button>
+<button class="domain" data-domain="education"><strong>📚 Education</strong>Where are learners thriving or struggling?</button>
+</div>
+<div id="domainPanel" class="card domain-panel" tabindex="-1"></div>
+</section>
+
+<section>
+<h2>5. Real case: sports data you can actually see</h2>
+<div class="card">
+<span class="tag">MLB Statcast</span>
+<h3>Baseball turned movement into data.</h3>
+<p>Major League Baseball's Statcast system measures events and movements on the field. Its public glossary includes metrics such as exit velocity, launch angle, sprint speed, pitch movement, and bat-tracking measures.</p>
+<p><strong>Think like a data team:</strong> Engineers help capture and move tracking data. Analytics engineers can create trusted metrics. Analysts can explain performance patterns. Scientists can build models around outcomes and strategy.</p>
+<p><a href="https://www.mlb.com/glossary/statcast" target="_blank" rel="noopener">Explore MLB's Statcast glossary</a></p>
+</div>
+</section>
+
+<section>
+<h2>6. Real case: data for community impact</h2>
+<div class="card">
+<span class="tag">Feeding America • Map the Meal Gap</span>
+<h3>What if the question is: where is food insecurity highest?</h3>
+<p>Feeding America's Map the Meal Gap provides local estimates related to food insecurity and food costs. This kind of work can help communities understand differences that national averages can hide.</p>
+<p><strong>Your turn:</strong> What data might help estimate local food insecurity? What assumptions could affect the estimate? Who might use the results?</p>
+<textarea aria-label="Your Map the Meal Gap notes" placeholder="The data might include... A limitation might be... Someone who could use this is..."></textarea>
+<p><a href="https://www.feedingamerica.org/research/map-the-meal-gap/how-we-got-the-map-data" target="_blank" rel="noopener">Explore Feeding America's methodology</a></p>
+</div>
+</section>
+
+<section>
+<h2>7. Real case: recommendations are a data problem</h2>
+<div class="card">
+<span class="tag">Spotify Engineering</span>
+<h3>Personalization starts with signals.</h3>
+<p>Spotify has publicly described using signals such as listening history, playlists, and interactions with the app in machine-learning personalization.</p>
+<p>But “recommend something good” hides a harder question:</p>
+<p class="claim"><strong>What counts as good?</strong> A click? A full listen? A save? Discovery of something new? Long-term satisfaction?</p>
+<p>This is where roles meet. Data must be collected reliably, transformed into meaningful measures, analyzed, modeled, tested, and interpreted.</p>
+<p><a href="https://engineering.atspotify.com/2023/03/how-spotify-uses-ml-to-create-the-future-of-personalization" target="_blank" rel="noopener">Read Spotify Engineering's personalization example</a></p>
+</div>
+</section>
+
+<section>
+<h2>8. Does this problem need AI?</h2>
+<div class="card">
+<p><strong>Scenario:</strong> A nonprofit wants to know which three neighborhoods received the fewest deliveries last month.</p>
+<button class="choice aiq" data-a="ai">Yes. Every serious data problem should use AI.</button>
+<button class="choice aiq" data-a="maybe">Probably not. A query, calculation, and visualization may answer this directly.</button>
+<div id="aifb" class="feedback" tabindex="-1"></div>
+</div>
+<div class="warning" style="margin-top:1rem"><strong>Assignment 2 connection:</strong> AI is a tool, not the goal. A strong data professional asks what the problem requires before choosing the method.</div>
+</section>
+
+<section>
+<h2>9. Now make the problem harder</h2>
+<div class="card">
+<p><strong>New question:</strong> “Can we predict which neighborhoods may face the greatest delivery shortages next month so the organization can plan ahead?”</p>
+<p>AI or statistical modeling <em>might</em> now be useful—but first ask:</p>
+<ul>
+<li>What historical data is available?</li>
+<li>What other factors could influence shortages?</li>
+<li>How would we define and measure “greatest shortage”?</li>
+<li>How would we test whether the prediction is useful?</li>
+<li>What happens if the prediction is wrong?</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>10. Role + domain mash-up</h2>
+<p>Select a role and a domain. You will get a starter scenario to react to.</p>
+<div class="card">
+<div class="builder">
+<div><label for="role"><strong>Role</strong></label>
+<select id="role"><option value="">Choose...</option><option>Data Analyst</option><option>Data Engineer</option><option>Analytics Engineer</option><option>Data Scientist</option></select></div>
+<div><label for="domain"><strong>Domain</strong></label>
+<select id="domain"><option value="">Choose...</option><option>Sports</option><option>Beauty</option><option>Gaming</option><option>Healthcare</option><option>Music</option><option>Finance</option><option>Energy</option><option>Shopping</option><option>Nonprofits</option><option>Cybersecurity</option><option>Logistics</option><option>Education</option></select></div>
+</div>
+<button id="mash" style="margin-top:1rem">Build my scenario</button>
+<div id="mashout" class="result" tabindex="-1"></div>
+</div>
+</section>
+
+<section>
+<h2>11. What seems most like you—right now?</h2>
+<p>Choose the statement you are most drawn to in each row. Your result is a conversation starter, not a verdict.</p>
+<div class="card">
+<p><strong>When data is messy...</strong></p>
+<button class="choice quiz" data-role="engineer">I wonder why the pipeline/system failed.</button>
+<button class="choice quiz" data-role="analytics">I want to make the data clean and reusable.</button>
+<button class="choice quiz" data-role="analyst">I want enough clean data to answer the question.</button>
+<button class="choice quiz" data-role="scientist">I wonder how the mess affects a model or experiment.</button>
+</div>
+<div class="card" style="margin-top:.8rem">
+<p><strong>When someone gives me a big question...</strong></p>
+<button class="choice quiz" data-role="analyst">I want to investigate what the evidence says.</button>
+<button class="choice quiz" data-role="scientist">I want to model what might happen next.</button>
+<button class="choice quiz" data-role="engineer">I think about what systems/data sources are needed.</button>
+<button class="choice quiz" data-role="analytics">I think about how the data should be defined and structured.</button>
+</div>
+<div class="card" style="margin-top:.8rem">
+<p><strong>The outcome that sounds most satisfying...</strong></p>
+<button class="choice quiz" data-role="engineer">A reliable system that keeps working.</button>
+<button class="choice quiz" data-role="analyst">An insight that changes a decision.</button>
+<button class="choice quiz" data-role="scientist">A well-tested model or experiment.</button>
+<button class="choice quiz" data-role="analytics">A trusted dataset/metric everyone can use.</button>
+</div>
+<button id="results" style="margin-top:1rem">Show my exploration result</button>
+<div id="quizout" class="result" tabindex="-1"></div>
+</section>
+
+<section>
+<h2>12. Build your Future Data Brief</h2>
+<p>You now need <strong>two roles + two domains</strong>. Choose based on curiosity—not what sounds most prestigious.</p>
+<div class="card">
+<label for="toproles"><strong>My top 2 roles</strong></label>
+<textarea id="toproles" placeholder="1. ... because ...&#10;2. ... because ..."></textarea>
+<label for="topdomains" style="display:block;margin-top:1rem"><strong>My top 2 domains</strong></label>
+<textarea id="topdomains" placeholder="1. ... because ...&#10;2. ... because ..."></textarea>
+<label for="problem" style="display:block;margin-top:1rem"><strong>One problem I would want to solve</strong></label>
+<textarea id="problem" placeholder="Imagine I am a ___ working in ___. My team needs to..."></textarea>
+</div>
+</section>
+
+<section>
+<h2>13. Seed your final Scratch project</h2>
+<div class="callout">
+<p><strong>Your Assignment 3 choices will become a world you can build.</strong></p>
+<p>Imagine you are a <strong>[ROLE]</strong> working in <strong>[DOMAIN]</strong>. Your team faces a problem. Data gives you clues. You make choices. Something changes.</p>
+<p>That is already the beginning of a story—or a game.</p>
+</div>
+<div class="card" style="margin-top:1rem">
+<label for="scene"><strong>Write one possible opening scene:</strong></label>
+<textarea id="scene" placeholder="Example: I am a data analyst for a basketball team. It is the morning before a playoff game, and the coach tells me..."></textarea>
+</div>
+</section>
+
+<section>
+<h2>Sources & optional exploration</h2>
+<ul>
+<li><a href="https://www.mlb.com/glossary/statcast" target="_blank" rel="noopener">MLB — Statcast Glossary</a></li>
+<li><a href="https://www.feedingamerica.org/research/map-the-meal-gap/how-we-got-the-map-data" target="_blank" rel="noopener">Feeding America — Map the Meal Gap Methodology</a></li>
+<li><a href="https://engineering.atspotify.com/2023/03/how-spotify-uses-ml-to-create-the-future-of-personalization" target="_blank" rel="noopener">Spotify Engineering — How Spotify Uses ML to Create the Future of Personalization</a></li>
+<li><a href="https://www.energy.gov/topics/artificial-intelligence" target="_blank" rel="noopener">U.S. Department of Energy — Artificial Intelligence</a></li>
+</ul>
+</section>
+</main>
+
+<footer><div class="wrap"><strong>Assignment 3 • Choose Your Data Adventure</strong><br>What problems do you want to solve? What world do you want to solve them in?</div></footer>
+
+<script>
+const bar=document.getElementById('bar');
+function progress(){const d=document.documentElement,max=d.scrollHeight-d.clientHeight;bar.style.width=(max?d.scrollTop/max*100:100)+'%'}
+document.addEventListener('scroll',progress,{passive:true});progress();
+function show(id,msg){const e=document.getElementById(id);e.innerHTML=msg;e.classList.add('show');e.focus()}
+const roleNames={analyst:'Data Analyst',engineer:'Data Engineer',analytics:'Analytics Engineer',scientist:'Data Scientist'};
+document.querySelectorAll('.energy').forEach(b=>b.onclick=()=>show('energyfb',`<strong>${roleNames[b.dataset.role]} energy.</strong> That problem aligns strongly with a ${roleNames[b.dataset.role]}'s typical focus. It does not mean this must be your career—notice whether the problem itself excited you.`));
+document.querySelectorAll('.collab').forEach(b=>b.onclick=()=>show('collabfb',b.dataset.a==='team'?'<strong>Exactly.</strong> Real data work is collaborative. Missing data, definitions, analysis, and model performance can all be connected.':'<strong>Too narrow.</strong> That role may be important, but this scenario contains multiple problems. Data teams collaborate.'));
+const domains={
+sports:["Sports","A team has player-tracking data and wants to understand why late-game performance drops.","What data would you inspect? Which role would you want to play? Could the pattern reflect fatigue, strategy, opponent behavior, or something else?"],
+beauty:["Beauty","A virtual shade-matching experience works well for some customers but poorly for others.","What data would reveal the gap? Who is represented in testing data? Which roles could improve the system?"],
+gaming:["Gaming","Thousands of new players quit at the same level of a game.","Is the level too hard, confusing, buggy, or simply boring? What behavior data would help you investigate?"],
+health:["Healthcare","A clinic wants to understand why appointment no-shows increased.","What data could help? What sensitive information requires care? Does this problem need prediction—or first an analysis of what changed?"],
+music:["Music","Listeners are skipping a new recommendation playlist much more often than expected.","Is the data arriving correctly? Is the metric defined well? Which listeners are skipping? Is the recommendation model part of the problem?"],
+finance:["Finance","A bank sees an unusual spike in card transactions being flagged.","Is there more fraud—or is the detection system behaving differently? What errors would matter most?"],
+energy:["Energy","A city expects extreme heat and wants to anticipate periods of unusually high electricity demand.","What historical, weather, and usage data could matter? What happens if the forecast is wrong?"],
+shopping:["Shopping","Customers add items to carts but abandon checkout on mobile devices.","Where in the process do they leave? Is it a technical problem, experience problem, pricing issue, or something else?"],
+nonprofit:["Nonprofits","A food-assistance organization wants to decide where additional delivery capacity could matter most.","What data represents need? What data represents current service? What might those datasets miss?"],
+cyber:["Cybersecurity","A company detects thousands of unusual login attempts overnight.","Which events are actually suspicious? How could analysts and models separate signal from noise?"],
+logistics:["Logistics","Delivery times suddenly increase in one region.","Is the cause traffic, staffing, routing, weather, warehouse delays, bad data—or several things together?"],
+education:["Education","Students are completing lessons but struggling on the next assessment.","What does completion really measure? What learning behavior could help explain the gap?"]
+};
+document.querySelectorAll('.domain').forEach(b=>b.onclick=()=>{
+ const d=domains[b.dataset.domain],p=document.getElementById('domainPanel');
+ p.innerHTML=`<span class="tag">${d[0]}</span><h3>${d[1]}</h3><p>${d[2]}</p><p><strong>Assignment 1 habit:</strong> Where is the data? &nbsp; <strong>Assignment 2 habit:</strong> Where might AI help—and what evidence would you need?</p>`;
+ p.classList.add('show');p.focus();
+});
+document.querySelectorAll('.aiq').forEach(b=>b.onclick=()=>show('aifb',b.dataset.a==='maybe'?'<strong>Yes.</strong> If the goal is simply to identify the three lowest-delivery neighborhoods last month, straightforward analysis may be enough. Use the simplest method that answers the question well.':'<strong>Not necessarily.</strong> AI adds complexity and is not automatically better. First define the problem, then choose the method.'));
+const starters={
+"Data Analyst":"investigate what changed, where it changed, and what the evidence suggests",
+"Data Engineer":"make sure the data needed by the team arrives reliably and is usable",
+"Analytics Engineer":"turn raw data into trusted metrics and analysis-ready datasets",
+"Data Scientist":"test whether patterns in the data can support prediction, experimentation, or optimization"
+};
+const domainProblems={
+Sports:"help a team understand a performance problem",
+Beauty:"understand why a product or digital experience is not serving some customers well",
+Gaming:"understand why players are leaving at a particular point",
+Healthcare:"help a care team understand a change in patient or operational outcomes",
+Music:"improve how listeners discover and engage with music",
+Finance:"identify and understand unusual transaction patterns",
+Energy:"help plan for changing energy demand",
+Shopping:"understand and improve a frustrating customer journey",
+Nonprofits:"help an organization direct limited resources where they could matter most",
+Cybersecurity:"identify suspicious activity without overwhelming the team with false alarms",
+Logistics:"understand and reduce delivery delays",
+Education:"understand where learners are struggling and what support may help"
+};
+document.getElementById('mash').onclick=()=>{
+ const r=document.getElementById('role').value,d=document.getElementById('domain').value;
+ const out=document.getElementById('mashout');
+ if(!r||!d){out.innerHTML='Choose both a role and a domain first.'}
+ else{out.innerHTML=`<strong>You are a ${r} working in ${d}.</strong><p>Your team needs to ${domainProblems[d]}. Your part of the challenge is to ${starters[r]}.</p><p><strong>Now ask:</strong> What data would you need? Who could benefit? What could go wrong? Where might AI help—or not help?</p>`}
+ out.classList.add('show');out.focus();
+};
+let scores={analyst:0,engineer:0,analytics:0,scientist:0};
+document.querySelectorAll('.quiz').forEach(b=>b.onclick=()=>{
+ const parent=b.parentElement;
+ parent.querySelectorAll('.quiz').forEach(x=>{if(x.dataset.chosen){scores[x.dataset.role]--;delete x.dataset.chosen;x.style.background='white'}});
+ scores[b.dataset.role]++;b.dataset.chosen='1';b.style.background='#f3f0fb';
+});
+document.getElementById('results').onclick=()=>{
+ const total=Object.values(scores).reduce((a,b)=>a+b,0),out=document.getElementById('quizout');
+ if(total<3){out.innerHTML='<strong>Choose one response in each of the three sections first.</strong>'}
+ else{
+  const max=Math.max(...Object.values(scores));const leaders=Object.keys(scores).filter(k=>scores[k]===max).map(k=>roleNames[k]);
+  out.innerHTML=`<strong>Your strongest pull in these three questions:</strong> ${leaders.join(' + ')}.<p>This is not a recommendation or personality score. Use it as evidence about which kinds of problems caught your attention. Your Assignment 3 requires two roles, so also consider your second choice and what you learned in the deck.</p>`;
+ }
+ out.classList.add('show');out.focus();
+};
+</script>
+</body></html>
